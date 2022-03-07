@@ -9,8 +9,6 @@ A very famous graph/permutation problem is the Traveling Salesman Problem: given
 
 However, not all is lost. For computationally "hard" problems such as this one, we may employ any of several means to find good if not strictly optimal solutions - say within 5-10%  of optimal. (Note that "computationally hard" problems are formalized as "np-complete" or "np-hard."). One way to address this problem might be based upon a simplified approach to the permutation form of genetic algorithms. As always, Wikipedia has some good information on this technique.
 
- 
-
 Here is a basic approach (based upon an algorithm presented at Wikipedia) to solve our problem:
 
 ```
@@ -40,7 +38,7 @@ Keep the few best tours as-is.
 
 Make copies of them and mutate the copies.
 
-### Termination of the Algorithm
+## Termination of the Algorithm
 
 You will repeat the process of creating a generation of tours, checking for the best, determining elites and creating mutations, until the program reaches a terminating condition. Typical ways to terminate this type of algorithm include:
 - A solution is found that satisfies minimum criteria (found a tour that is less than some maximum acceptable cost)
