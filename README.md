@@ -64,9 +64,9 @@ When your program runs, it will interactively get the following information from
 - the number of cities to run
 - how many individual tours are in a given generation
 - how many generations to run
-- what percentage of a generation should be comprised of mutations
+- what percentage of a generation should be comprised of mutated tours
 
-Your program will always keep exactly two elites. The program reads the distances.txt file, gets the input from the user and then the two algorithms will grind away until output is produced.
+Your program will always keep one elites. The program reads the distances.txt file, gets the input from the user and then the two algorithms will grind away until output is produced.
 
 A graphical representation of how the generations should work is available along with this file and distances.txt on the assignment page. The following link MIGHT work:
 
