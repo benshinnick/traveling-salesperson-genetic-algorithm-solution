@@ -12,13 +12,13 @@ class BruteForceAlgorithm {
         int numOfCities;
         int currPermuation[MAX_PERMUTATION_SIZE];
         double lowestTourCost;
-        Tour currTour;
+        // Tour currTour; // probably only need in runBruteForce
 
         void getNextPermuation();
         void getNextTour();
 
     public:
-        BruteForceAlgorithm(int numOfCities);
+        BruteForceAlgorithm(int numOfCities, CityGraph& cityGraph);
         void runBruteFoceAlgorithm();
         double getLowestFoundTourCost();
 };

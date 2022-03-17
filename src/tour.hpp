@@ -1,6 +1,8 @@
 #ifndef TOUR_HPP
 #define TOUR_HPP
 
+#include "city-graph.hpp"
+
 class Tour {
 
     static const int MAX_TOUR_SIZE = 21;
@@ -11,7 +13,7 @@ class Tour {
         double calculateTourCost();
 
     public:
-        Tour(int permutation[], int numCitiesInTour);
+        Tour(int permutation[], int numCitiesInTour, CityGraph& cityGraph);
         double getTourCost();
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
