@@ -3,9 +3,9 @@
 
 #include "city-distances.hpp"
 
-class Tour {
+static const int MAX_TOUR_SIZE = 21;
 
-    static const int MAX_TOUR_SIZE = 21;
+class Tour {
 
     private:
         int tourArray[MAX_TOUR_SIZE];

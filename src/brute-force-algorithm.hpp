@@ -5,13 +5,11 @@
 
 class BruteForceAlgorithm {
 
-    static const int MAX_PERMUTATION_SIZE = 19;
-
     private:
         int numOfCities;
         int currPermuation[MAX_PERMUTATION_SIZE];
         double lowestTourCost;
-        // Tour currTour; // probably only need in runBruteForce
+        // Tour currTour; // only need runBruteForceAlgorithm()
 
         void getNextPermuation();
         void getNextTour();
