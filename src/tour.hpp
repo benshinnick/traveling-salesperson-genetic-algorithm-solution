@@ -1,7 +1,7 @@
 #ifndef TOUR_HPP
 #define TOUR_HPP
 
-#include "city-graph.hpp"
+#include "city-distances.hpp"
 
 class Tour {
 
