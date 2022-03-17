@@ -1,7 +1,6 @@
 #ifndef BRUTE_FORCE_ALGORITHM_HPP
 #define BRUTE_FORCE_ALGORITHM_HPP
 
-#include "city-graph.hpp"
 #include "tour.hpp"
 
 class BruteForceAlgorithm {
@@ -18,7 +17,7 @@ class BruteForceAlgorithm {
         void getNextTour();
 
     public:
-        BruteForceAlgorithm(int numOfCities, CityGraph& cityGraph);
+        BruteForceAlgorithm(int numOfCities);
         void runBruteFoceAlgorithm();
         double getLowestFoundTourCost();
 };

@@ -4,7 +4,7 @@ double Tour::calculateTourCost() {
 
 }
 
-Tour::Tour(int permutation[], int numCitiesInTour, CityGraph& cityGraph) {
+Tour::Tour(int permutation[], int numCitiesInTour) {
 
 }
 

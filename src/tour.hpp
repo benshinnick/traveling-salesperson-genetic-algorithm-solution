@@ -13,7 +13,7 @@ class Tour {
         double calculateTourCost();
 
     public:
-        Tour(int permutation[], int numCitiesInTour, CityGraph& cityGraph);
+        Tour(int permutation[], int numCitiesInTour);
         double getTourCost();
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);

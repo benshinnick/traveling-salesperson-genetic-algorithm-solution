@@ -10,10 +10,12 @@ class CityGraph {
     const std::string DISTANCES_INPUT_FILE_NAME = "distances.txt";
 
     private:
+        static CityGraph cityGraphSingleton;
         int cityDistances[MAX_NUM_CITIES][MAX_NUM_CITIES];
         void fillCityDistancesFromInputFile();
         
     public:
+        static CityGraph getInstance();
         CityGraph();
         int setDistance(int departureCity, int arrivalCity, int distance);
         int getDistance(int departureCity, int arrivalCity);

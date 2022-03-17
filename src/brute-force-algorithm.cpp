@@ -7,7 +7,7 @@ void BruteForceAlgorithm::getNextTour() {
 
 }
 
-BruteForceAlgorithm::BruteForceAlgorithm(int numOfCities, CityGraph& cityGraph) {
+BruteForceAlgorithm::BruteForceAlgorithm(int numOfCities) {
 
 }
 
