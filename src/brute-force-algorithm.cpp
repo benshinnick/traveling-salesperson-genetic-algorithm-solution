@@ -15,6 +15,6 @@ void BruteForceAlgorithm::runBruteFoceAlgorithm() {
 
 }
 
-double BruteForceAlgorithm::getLowestFoundTourCost() {
+float BruteForceAlgorithm::getLowestFoundTourCost() {
 
 }

@@ -18,7 +18,7 @@ $(TESTS): $(CATCH)
 	test/$@ --success
 
 test-all: $(TESTS)
-test: test/test.cpp
+test-city-distances: test/test-city-distances.cpp src/city-distances.o
 
 clean:
 	rm -rf *.dSYM
