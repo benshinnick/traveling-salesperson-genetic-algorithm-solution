@@ -3,14 +3,16 @@
 
 #include "city-distances.hpp"
 
-static const int MAX_TOUR_SIZE = 21;
-
 class Tour {
 
+    static const int MAX_TOUR_SIZE = 21;
+    static const int START_AND_END_CITY = 0;
+
     private:
-        int tourArray[MAX_TOUR_SIZE];
+        int tourCities[MAX_TOUR_SIZE];
         int numCitiesInTour;
         double calculateTourCost();
+        void createTourFromPermuation(int permutation[]);
 
     public:
         Tour(int permutation[], int numCitiesInTour);
