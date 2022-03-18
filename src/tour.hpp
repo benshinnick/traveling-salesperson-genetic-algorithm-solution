@@ -3,6 +3,10 @@
 
 #include "city-distances.hpp"
 
+//TESTING
+#include <iostream>
+//TESTING
+
 class Tour {
 
     static const int MAX_TOUR_SIZE = 21;
@@ -13,9 +17,11 @@ class Tour {
         int numCitiesInTour;
         double calculateTourCost();
 
-        void createTourFromPermutationOrMutation(int* permutationOrMutation);
-        int* getNextPermuation();
-        int* getNextMutation();
+        void createThisTourFromPermutationOrMutation(int* permutationOrMutation);
+        int* getCurrPermutationOrMutation();
+        int* getNextPermutation();
+        int* getNewMutation();
+        void swap(int* array, int index1, int index2);
 
     public:
         Tour(int* permutationOrMutation, int numCitiesInTour);
@@ -30,6 +36,10 @@ class Tour {
         int getTourCity(int cityIndex);
         void setNumCitiesInTour(int numCitiesInTour);
         int getNumCitiesInTour();
+
+        //TESTING
+        void printPermutationOrMuation();
+        //TESTING
 };
 
 #endif

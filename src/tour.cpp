@@ -10,7 +10,7 @@ double Tour::calculateTourCost() {
     return totalCost;
 }
 
-void Tour::createTourFromPermutationOrMutation(int* permutationOrMutation) {
+void Tour::createThisTourFromPermutationOrMutation(int* permutationOrMutation) {
     int startingIndex = 0;
     int endingIndex = numCitiesInTour;
 
@@ -21,17 +21,52 @@ void Tour::createTourFromPermutationOrMutation(int* permutationOrMutation) {
     tourCities[endingIndex] = START_AND_END_CITY;
 }
 
-int* Tour::getNextPermuation() {
+int* Tour::getCurrPermutationOrMutation() {
+    int currPermuationOrMutation[MAX_TOUR_SIZE - 2];
+    for(int i = 0; i < numCitiesInTour; ++i) {
+        currPermuationOrMutation[i] = tourCities[i+1];
+    }
+    return currPermuationOrMutation;
+}
 
+int* Tour::getNextPermutation() {
+    int* nextPermuation = getCurrPermutationOrMutation();
+    const int NUM_ELEMENTS = numCitiesInTour - 1;
+
+    int m = NUM_ELEMENTS - 2;
+    while(nextPermuation[m] > nextPermuation[m+1])
+        m = m - 1;
+
+    int k = NUM_ELEMENTS - 1;
+    while(nextPermuation[m] > nextPermuation[k])
+        k = k - 1;
+
+    swap(nextPermuation, m, k);
+    int p = m + 1;
+    int q = NUM_ELEMENTS - 1;
+    while(p < q) {
+        swap(nextPermuation, p, q);
+        p++;
+        q--;
+    }
+
+    return nextPermuation;
 }
 
 int* Tour::getNewMutation() {
-    
+    // TODO
+    return getCurrPermutationOrMutation();
+}
+
+void Tour::swap(int* array, int index1, int index2) {
+    int temp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = temp;
 }
 
 Tour::Tour(int* permutationOrMutation, int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
-    createTourFromPermutationOrMutation(permutationOrMutation);
+    createThisTourFromPermutationOrMutation(permutationOrMutation);
 }
 
 double Tour::getTourCost() {
@@ -39,19 +74,19 @@ double Tour::getTourCost() {
 }
 
 Tour Tour::getNextPermutedTour() {
-    
+    return Tour(getNextPermutation(), numCitiesInTour);
 }
 
 void Tour::setToNextPermutedTour() {
-    // Tour permutedTour = getNextPermutation();
+    createThisTourFromPermutationOrMutation(getNextPermutation());
 }
 
 Tour Tour::getNewMutatedTour() {
-
+    return Tour(getNewMutation(), numCitiesInTour);
 }
 
 void Tour::setToNewMutatedTour() {
-
+    createThisTourFromPermutationOrMutation(getNewMutation());
 }
 
 void Tour::setTourCity(int cityIndex, int city) {
@@ -69,3 +104,13 @@ void Tour::setNumCitiesInTour(int numCitiesInTour) {
 int Tour::getNumCitiesInTour() {
     return numCitiesInTour;
 }
+
+//TESTING
+void Tour::printPermutationOrMuation() {
+    int* permutationOrMutation = getCurrPermutationOrMutation();
+    for(int i = 0; i < numCitiesInTour - 1; ++i) {
+        std::cout << permutationOrMutation[i] << " ";
+    }
+    std::cout << std::endl;
+}
+//TESTING
