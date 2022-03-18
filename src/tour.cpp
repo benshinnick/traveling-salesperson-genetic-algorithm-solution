@@ -10,39 +10,47 @@ double Tour::calculateTourCost() {
     return totalCost;
 }
 
-void Tour::createTourFromPermuation(int permutation[]) {
+void Tour::createTourFromPermutationOrMutation(int* permutationOrMutation) {
     int startingIndex = 0;
     int endingIndex = numCitiesInTour;
 
     tourCities[startingIndex] = START_AND_END_CITY;
     for(int i = 1; i < numCitiesInTour; ++i) {
-        tourCities[i] = permutation[i-1];
+        tourCities[i] = permutationOrMutation[i-1];
     }
     tourCities[endingIndex] = START_AND_END_CITY;
 }
 
-Tour::Tour(int permutation[], int numCitiesInTour) {
+int* Tour::getNextPermuation() {
+
+}
+
+int* Tour::getNewMutation() {
+    
+}
+
+Tour::Tour(int* permutationOrMutation, int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
-    createTourFromPermuation(permutation);
+    createTourFromPermutationOrMutation(permutationOrMutation);
 }
 
 double Tour::getTourCost() {
     return calculateTourCost();
 }
 
-// Tour Tour::getNextPermuation() {
+Tour Tour::getNextPermutedTour() {
+    
+}
 
-// }
+void Tour::setToNextPermutedTour() {
+    // Tour permutedTour = getNextPermutation();
+}
 
-void Tour::setToNextPermuation() {
+Tour Tour::getNewMutatedTour() {
 
 }
 
-// Tour Tour::getNextMutation() {
-
-// }
-
-void Tour::setToNextMutation() {
+void Tour::setToNewMutatedTour() {
 
 }
 

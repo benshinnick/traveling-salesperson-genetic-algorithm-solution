@@ -12,15 +12,20 @@ class Tour {
         int tourCities[MAX_TOUR_SIZE];
         int numCitiesInTour;
         double calculateTourCost();
-        void createTourFromPermuation(int permutation[]);
+
+        void createTourFromPermutationOrMutation(int* permutationOrMutation);
+        int* getNextPermuation();
+        int* getNextMutation();
 
     public:
-        Tour(int permutation[], int numCitiesInTour);
+        Tour(int* permutationOrMutation, int numCitiesInTour);
         double getTourCost();
-        Tour getNextPermuation();
-        void setToNextPermuation();
-        Tour getNextMutation();
-        void setToNextMutation();
+
+        Tour getNextPermutedTour();
+        void setToNextPermutedTour();
+        Tour getNewMutatedTour();
+        void setToNewMutatedTour();
+
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
         void setNumCitiesInTour(int numCitiesInTour);
