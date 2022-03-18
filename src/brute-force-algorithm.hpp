@@ -8,7 +8,7 @@ class BruteForceAlgorithm {
     private:
         int numOfCities;
         int currPermuation[MAX_TOUR_SIZE - 2];
-        double lowestTourCost;
+        float lowestTourCost;
         // Tour currTour; // should only need in runBruteForceAlgorithm()
 
         void getNextPermuation();
@@ -17,7 +17,7 @@ class BruteForceAlgorithm {
     public:
         BruteForceAlgorithm(int numOfCities);
         void runBruteFoceAlgorithm();
-        double getLowestFoundTourCost();
+        float getLowestFoundTourCost();
 };
 
 #endif

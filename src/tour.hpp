@@ -10,11 +10,11 @@ class Tour {
     private:
         int tourArray[MAX_TOUR_SIZE];
         int numCitiesInTour;
-        double calculateTourCost();
+        float calculateTourCost();
 
     public:
         Tour(int permutation[], int numCitiesInTour);
-        double getTourCost();
+        float getTourCost();
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
         

@@ -1,6 +1,6 @@
 #include "tour.hpp"
 
-double Tour::calculateTourCost() {
+float Tour::calculateTourCost() {
 
 }
 
@@ -8,7 +8,7 @@ Tour::Tour(int permutation[], int numCitiesInTour) {
 
 }
 
-double Tour::getTourCost() {
+float Tour::getTourCost() {
 
 }
 
