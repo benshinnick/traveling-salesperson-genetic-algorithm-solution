@@ -7,13 +7,13 @@ class BruteForceAlgorithm {
 
     private:
         int numOfCities;
-        float lowestTourCost;
+        double lowestTourCost;
         // Tour currTour; // should only need in runBruteForceAlgorithm()
 
     public:
         BruteForceAlgorithm(int numOfCities);
         void runBruteFoceAlgorithm();
-        float getLowestFoundTourCost();
+        double getLowestFoundTourCost();
 };
 
 #endif

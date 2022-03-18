@@ -1,14 +1,17 @@
 #include "tour.hpp"
 
-float Tour::calculateTourCost() {
+double Tour::calculateTourCost() {
+    double tot;
+    for(int i = 0; i < numCitiesInTour; ++i) {
 
+    }
 }
 
 Tour::Tour(int permutation[], int numCitiesInTour) {
 
 }
 
-float Tour::getTourCost() {
+double Tour::getTourCost() {
 
 }
 

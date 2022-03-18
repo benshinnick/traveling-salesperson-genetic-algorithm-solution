@@ -14,7 +14,7 @@ void CityDistances::fillCityDistancesFromInputFile() {
     for(int r = 0; r < MAX_NUM_CITIES; ++r) {
         for(int c = 0; c < MAX_NUM_CITIES; ++c) {
             if(r == c) continue;
-            float distance;
+            double distance;
             distancesFileInput >> distance;
             cityDistancesMatrix[r][c] = distance;
         }
@@ -27,10 +27,10 @@ CityDistances::CityDistances() {
     fillCityDistancesFromInputFile();
 }
 
-void CityDistances::setDistance(int departureCity, int arrivalCity, float distance) {
+void CityDistances::setDistance(int departureCity, int arrivalCity, double distance) {
     cityDistancesMatrix[departureCity][arrivalCity] = distance;
 }
 
-float CityDistances::getDistance(int departureCity, int arrivalCity) {
+double CityDistances::getDistance(int departureCity, int arrivalCity) {
     return cityDistancesMatrix[departureCity][arrivalCity];
 }
