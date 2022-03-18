@@ -8,8 +8,6 @@ class GeneticAlgorithm {
     private:
         //design later
 
-        void getNextPermuation();
-
     public:
 
 };

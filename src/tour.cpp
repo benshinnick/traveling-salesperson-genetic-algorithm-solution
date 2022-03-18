@@ -12,6 +12,22 @@ float Tour::getTourCost() {
 
 }
 
+Tour Tour::getNextPermuation() {
+
+}
+
+void Tour::setToNextPermuation() {
+
+}
+
+Tour Tour::getNextMutation() {
+
+}
+
+void Tour::setToNextMutation() {
+
+}
+
 void Tour::setTourCity(int cityIndex, int city) {
 
 }

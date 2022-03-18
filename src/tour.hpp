@@ -15,9 +15,12 @@ class Tour {
     public:
         Tour(int permutation[], int numCitiesInTour);
         float getTourCost();
+        Tour getNextPermuation();
+        void setToNextPermuation();
+        Tour getNextMutation();
+        void setToNextMutation();
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
-        
 };
 
 #endif
