@@ -1,16 +1,18 @@
 #include "tour.hpp"
 
 double Tour::calculateTourCost() {
-    double totalCost;
+    double totalCost = 0;
     for(int i = 0; i < numCitiesInTour; ++i) {
-        int departureCity, arrivalCity = tourCities[i], tourCities[i+1];
+        int departureCity = tourCities[i];
+        int arrivalCity = tourCities[i+1];
         totalCost += CityDistances::getInst().getDistance(departureCity, arrivalCity);
     }
     return totalCost;
 }
 
 void Tour::createTourFromPermuation(int permutation[]) {
-    int startingIndex, endingIndex = 0, numCitiesInTour;
+    int startingIndex = 0;
+    int endingIndex = numCitiesInTour;
 
     tourCities[startingIndex] = START_AND_END_CITY;
     for(int i = 1; i < numCitiesInTour; ++i) {
@@ -28,17 +30,17 @@ double Tour::getTourCost() {
     return calculateTourCost();
 }
 
-Tour Tour::getNextPermuation() {
+// Tour Tour::getNextPermuation() {
 
-}
+// }
 
 void Tour::setToNextPermuation() {
 
 }
 
-Tour Tour::getNextMutation() {
+// Tour Tour::getNextMutation() {
 
-}
+// }
 
 void Tour::setToNextMutation() {
 
@@ -50,4 +52,12 @@ void Tour::setTourCity(int cityIndex, int city) {
 
 int Tour::getTourCity(int cityIndex) {
     return tourCities[cityIndex];
+}
+
+void Tour::setNumCitiesInTour(int numCitiesInTour) {
+    this->numCitiesInTour = numCitiesInTour;
+}
+
+int Tour::getNumCitiesInTour() {
+    return numCitiesInTour;
 }

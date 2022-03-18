@@ -23,6 +23,8 @@ class Tour {
         void setToNextMutation();
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
+        void setNumCitiesInTour(int numCitiesInTour);
+        int getNumCitiesInTour();
 };
 
 #endif

@@ -19,6 +19,7 @@ $(TESTS): $(CATCH)
 
 test-all: $(TESTS)
 test-city-distances: test/test-city-distances.cpp src/city-distances.o
+test-tour: test/test-tour.cpp src/tour.o src/city-distances.o
 
 clean:
 	rm -rf *.dSYM
