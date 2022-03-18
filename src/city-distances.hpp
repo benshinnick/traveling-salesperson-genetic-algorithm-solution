@@ -11,7 +11,7 @@ class CityDistances {
 
     private:
         static CityDistances cityDistancesSingleton;
-        int cityDistances[MAX_NUM_CITIES][MAX_NUM_CITIES];
+        int cityDistancesMatrix[MAX_NUM_CITIES][MAX_NUM_CITIES];
         void fillCityDistancesFromInputFile();
         
     public:
