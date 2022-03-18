@@ -1,8 +1,8 @@
 #include "city-distances.hpp"
 
-CityDistances CityDistances::getInst() {
-    bool isInitialized = cityDistancesSingleton.getDistance(0, 1) != 0;
-    if(!isInitialized) cityDistancesSingleton = CityDistances();
+CityDistances& CityDistances::getInst() {
+    // only instantiated on first use and guarenteed to be destroyed
+    static CityDistances cityDistancesSingleton;
     return cityDistancesSingleton;
 }
 
@@ -27,10 +27,10 @@ CityDistances::CityDistances() {
     fillCityDistancesFromInputFile();
 }
 
-int CityDistances::setDistance(int departureCity, int arrivalCity, int distance) {
+void CityDistances::setDistance(int departureCity, int arrivalCity, double distance) {
     cityDistancesMatrix[departureCity][arrivalCity] = distance;
 }
 
-int CityDistances::getDistance(int departureCity, int arrivalCity) {
+double CityDistances::getDistance(int departureCity, int arrivalCity) {
     return cityDistancesMatrix[departureCity][arrivalCity];
 }
