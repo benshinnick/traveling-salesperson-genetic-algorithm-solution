@@ -22,7 +22,7 @@ void Tour::createThisTourFromPermutationOrMutation(std::vector<int> permutationO
     tourCities[endingIndex] = START_AND_END_CITY;
 }
 
-void Tour::setToDefaultPermutation() {
+void Tour::setToDefaultTour() {
     int startingIndex = 0, endingIndex = numCitiesInTour;
 
     tourCities[startingIndex] = START_AND_END_CITY;
@@ -113,7 +113,7 @@ int Tour::getRandomIntInRange(int min, int max) {
 Tour::Tour(int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
     this->tourCities.resize(numCitiesInTour + 1);
-    setToDefaultPermutation();  
+    setToDefaultTour(); 
 }
 
 Tour::Tour(std::vector<int> permutationOrMutation, int numCitiesInTour) {
