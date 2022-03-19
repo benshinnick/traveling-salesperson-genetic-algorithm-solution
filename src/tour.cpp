@@ -13,11 +13,12 @@ double Tour::calculateTourCost() {
 }
 
 void Tour::createThisTourFromPermutationOrMutation(std::vector<int> permutationOrMutation) {
+    std::vector<int> permutationOrMutationCopy = permutationOrMutation;
     int startingIndex = 0, endingIndex = numCitiesInTour;
 
     tourCities[startingIndex] = START_AND_END_CITY;
     for(int i = 1; i < numCitiesInTour; ++i) {
-        tourCities[i] = permutationOrMutation[i-1];
+        tourCities[i] = permutationOrMutationCopy[i-1];
     }
     tourCities[endingIndex] = START_AND_END_CITY;
 }
@@ -110,7 +111,7 @@ int Tour::getRandomIntInRange(int min, int max) {
 Tour::Tour(int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
     this->tourCities.resize(numCitiesInTour + 1);
-    
+
     std::vector<int> defaultPermutation(numCitiesInTour - 1);
     defaultPermutation = getDefaultPermuation();
     createThisTourFromPermutationOrMutation(defaultPermutation);
