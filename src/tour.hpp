@@ -6,6 +6,7 @@
 //TESTING
 
 #include <vector>
+#include <random>
 
 #include "city-distances.hpp"
 
@@ -24,6 +25,7 @@ class Tour {
         std::vector<int> getNewMutation();
 
         void swap(std::vector<int>& array, int index1, int index2);
+        int getRandomIntInRange(int min, int max);
 
     public:
         Tour(std::vector<int> permutationOrMutation, int numCitiesInTour);

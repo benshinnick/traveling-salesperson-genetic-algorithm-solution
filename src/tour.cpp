@@ -13,8 +13,7 @@ double Tour::calculateTourCost() {
 }
 
 void Tour::createThisTourFromPermutationOrMutation(std::vector<int> permutationOrMutation) {
-    int startingIndex = 0;
-    int endingIndex = numCitiesInTour;
+    int startingIndex = 0, endingIndex = numCitiesInTour;
 
     tourCities[startingIndex] = START_AND_END_CITY;
     for(int i = 1; i < numCitiesInTour; ++i) {
@@ -57,6 +56,30 @@ std::vector<int> Tour::getNextPermutation() {
 
 std::vector<int> Tour::getNewMutation() {
     std::vector<int> newMutation = getCurrPermutationOrMutation();
+    const int NUM_OF_MUTATION_SWAPS = 4;
+
+    int minIndex = 0;
+    int midIndex = newMutation.size() / 2;
+    int maxIndex = newMutation.size() - 1;
+
+    for(int i = 0; i < NUM_OF_MUTATION_SWAPS; ++i) {
+        if(i % 2 == 0) {
+            // swap city from first half with any other city in the tour
+            swap(
+                newMutation,
+                getRandomIntInRange(minIndex, midIndex),
+                getRandomIntInRange(minIndex, maxIndex)
+            );
+        }
+        else {
+            // swap city from first half with a city from last half of the tour
+            swap(
+                newMutation,
+                getRandomIntInRange(minIndex, midIndex),
+                getRandomIntInRange(midIndex+1, maxIndex)
+            );
+        }
+    }
 
     return newMutation;
 }
@@ -65,6 +88,13 @@ void Tour::swap(std::vector<int>& array, int index1, int index2) {
     int temp = array[index1];
     array[index1] = array[index2];
     array[index2] = temp;
+}
+
+int Tour::getRandomIntInRange(int min, int max) {
+    std::random_device rd; // obtain a random number from hardware
+    std::mt19937 gen(rd()); // seed the generator
+    std::uniform_int_distribution<> distr(min, max); // define the range
+    return distr(gen); // generate random number in that range
 }
 
 // Public
