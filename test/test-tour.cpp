@@ -1,12 +1,31 @@
 #include "catch/catch.hpp"
 #include "../src/tour.hpp"
 
+#include <vector>
+
 TEST_CASE("Test basic tour functionality")
 {
     int testNumCities = 5;
-	int testPermutation[] = {1, 2, 3, 4};
+	std::vector<int> testPermutation = {1, 2, 3, 4};
     Tour sut = Tour(testPermutation, testNumCities);
 
     REQUIRE(sut.getNumCitiesInTour() == testNumCities);
     REQUIRE(sut.getTourCost() == 309.57);
+}
+
+TEST_CASE("Test permutations")
+{
+    // int testNumCities = 11;
+	// std::vector<int> testPermutation = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    int testNumCities = 5;
+	std::vector<int> testPermutation = {1, 2, 3, 4};
+    
+    Tour sut = Tour(testPermutation, testNumCities);
+
+    sut.printPermutationOrMuation();
+    for(int i = 0; i < 23; ++i) {
+        sut.setToNextPermutedTour();
+        sut.printPermutationOrMuation();
+    }
 }

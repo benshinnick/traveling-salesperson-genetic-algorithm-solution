@@ -1,30 +1,31 @@
 #ifndef TOUR_HPP
 #define TOUR_HPP
 
-#include "city-distances.hpp"
-
 //TESTING
 #include <iostream>
 //TESTING
 
-class Tour {
+#include <vector>
 
-    static const int MAX_TOUR_SIZE = 21;
+#include "city-distances.hpp"
+
+class Tour {
+    
     static const int START_AND_END_CITY = 0;
 
     private:
-        int tourCities[MAX_TOUR_SIZE];
+        std::vector<int> tourCities;
         int numCitiesInTour;
         double calculateTourCost();
 
-        void createThisTourFromPermutationOrMutation(int* permutationOrMutation);
-        int* getCurrPermutationOrMutation();
-        int* getNextPermutation();
-        int* getNewMutation();
-        void swap(int* array, int index1, int index2);
+        void createThisTourFromPermutationOrMutation(std::vector<int> permutationOrMutation);
+        std::vector<int> getCurrPermutationOrMutation();
+        std::vector<int> getNextPermutation();
+        std::vector<int> getNewMutation();
+        void swap(std::vector<int>& array, int index1, int index2);
 
     public:
-        Tour(int* permutationOrMutation, int numCitiesInTour);
+        Tour(std::vector<int> permutationOrMutation, int numCitiesInTour);
         double getTourCost();
 
         Tour getNextPermutedTour();
