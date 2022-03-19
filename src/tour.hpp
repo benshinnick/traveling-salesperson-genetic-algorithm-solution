@@ -29,6 +29,7 @@ class Tour {
         int getRandomIntInRange(int min, int max);
 
     public:
+        Tour();
         Tour(int numCitiesInTour);
         Tour(int permutationOrMutation[], int numCitiesInTour);
         double getTourCost();
