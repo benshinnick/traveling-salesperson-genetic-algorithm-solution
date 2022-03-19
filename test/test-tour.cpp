@@ -33,12 +33,12 @@ TEST_CASE("Test basic tour functionality") {
 }
 
 TEST_CASE("Test permutations") {
-    int testNumCities = 5;
-	std::vector<int> testPermutation = {1, 2, 3, 4};
+    int testNumCities = 4;
+	std::vector<int> testPermutation = {1, 2, 3};
     Tour sut = Tour(testPermutation, testNumCities);
 
     sut.printPermutationOrMutation();
-    for(int i = 0; i < 23; ++i) {
+    for(int i = 0; i < 5; ++i) {
         sut = sut.getNextPermutedTour();
         REQUIRE(isValidTour(sut));
         sut.printPermutationOrMutation();
