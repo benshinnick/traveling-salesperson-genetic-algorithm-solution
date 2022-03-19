@@ -120,10 +120,22 @@ double Tour::getTourCost() {
     return calculateTourCost();
 }
 
+void Tour::setToNextPermutedTour() {
+    int nextPermutation[numCitiesInTour - 1];
+    setArrayToNextPermutation(nextPermutation);
+    createThisTourFromPermutationOrMutation(nextPermutation);
+}
+
 Tour Tour::getNextPermutedTour() {
     int nextPermutation[numCitiesInTour - 1];
     setArrayToNextPermutation(nextPermutation);
     return Tour(nextPermutation, numCitiesInTour);
+}
+
+void Tour::setToNewMutatedTour() {
+    int newMutation[numCitiesInTour - 1];
+    setArrayToNewMutation(newMutation);
+    createThisTourFromPermutationOrMutation(newMutation);
 }
 
 Tour Tour::getNewMutatedTour() {

@@ -37,7 +37,7 @@ TEST_CASE("Test permutations") {
 
     sut.printPermutationOrMutation();
     for(int i = 0; i < 23; ++i) {
-        sut = sut.getNextPermutedTour();
+        sut.setToNextPermutedTour();
         REQUIRE(isValidTour(sut));
         sut.printPermutationOrMutation();
     }
@@ -51,7 +51,7 @@ TEST_CASE("Test mutations") {
 
     sut.printPermutationOrMutation();
     for(int i = 0; i < 6; ++i) {
-        sut = sut.getNewMutatedTour();
+        sut.setToNewMutatedTour();
         REQUIRE(isValidTour(sut));
         sut.printPermutationOrMutation();
     }

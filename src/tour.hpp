@@ -33,7 +33,9 @@ class Tour {
         Tour(int permutationOrMutation[], int numCitiesInTour);
         double getTourCost();
 
+        void setToNextPermutedTour();
         Tour getNextPermutedTour();
+        void setToNewMutatedTour();
         Tour getNewMutatedTour();
 
         void setTourCity(int cityIndex, int city);
