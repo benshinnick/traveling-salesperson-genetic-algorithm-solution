@@ -1,5 +1,7 @@
 #include "tour.hpp"
 
+// Helper Functions
+
 double Tour::calculateTourCost() {
     double totalCost = 0;
     for(int i = 0; i < numCitiesInTour; ++i) {
@@ -54,8 +56,9 @@ std::vector<int> Tour::getNextPermutation() {
 }
 
 std::vector<int> Tour::getNewMutation() {
-    // TODO
-    return getCurrPermutationOrMutation();
+    std::vector<int> newMutation = getCurrPermutationOrMutation();
+
+    return newMutation;
 }
 
 void Tour::swap(std::vector<int>& array, int index1, int index2) {
@@ -63,6 +66,8 @@ void Tour::swap(std::vector<int>& array, int index1, int index2) {
     array[index1] = array[index2];
     array[index2] = temp;
 }
+
+// Public
 
 Tour::Tour(std::vector<int> permutationOrMutation, int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
@@ -98,10 +103,6 @@ int Tour::getTourCity(int cityIndex) {
     return tourCities[cityIndex];
 }
 
-void Tour::setNumCitiesInTour(int numCitiesInTour) {
-    this->numCitiesInTour = numCitiesInTour;
-}
-
 int Tour::getNumCitiesInTour() {
     return numCitiesInTour;
 }
@@ -110,7 +111,7 @@ int Tour::getNumCitiesInTour() {
 void Tour::printPermutationOrMuation() {
     std::vector<int> permutationOrMutation = getCurrPermutationOrMutation();
     for(int i = 0; i < permutationOrMutation.size(); ++i) {
-        std::cout << permutationOrMutation[i] << " ";
+        std::cout << permutationOrMutation.at(i) << " ";
     }
     std::cout << std::endl;
 }

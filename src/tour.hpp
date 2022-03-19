@@ -10,7 +10,7 @@
 #include "city-distances.hpp"
 
 class Tour {
-    
+
     static const int START_AND_END_CITY = 0;
 
     private:
@@ -22,6 +22,7 @@ class Tour {
         std::vector<int> getCurrPermutationOrMutation();
         std::vector<int> getNextPermutation();
         std::vector<int> getNewMutation();
+
         void swap(std::vector<int>& array, int index1, int index2);
 
     public:
@@ -35,7 +36,6 @@ class Tour {
 
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
-        void setNumCitiesInTour(int numCitiesInTour);
         int getNumCitiesInTour();
 
         //TESTING
