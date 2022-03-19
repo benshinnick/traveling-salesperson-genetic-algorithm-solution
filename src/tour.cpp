@@ -35,12 +35,10 @@ std::vector<int> Tour::getNextPermutation() {
     const int NUM_ELEMENTS = numCitiesInTour - 1;
 
     int m = NUM_ELEMENTS - 2;
-    while(nextPermuation[m] > nextPermuation[m+1])
-        m = m - 1;
+    while(nextPermuation[m] > nextPermuation[m+1]) m--;
 
     int k = NUM_ELEMENTS - 1;
-    while(nextPermuation[m] > nextPermuation[k])
-        k = k - 1;
+    while(nextPermuation[m] > nextPermuation[k]) k--;
 
     swap(nextPermuation, m, k);
     int p = m + 1;
@@ -101,7 +99,7 @@ int Tour::getRandomIntInRange(int min, int max) {
 
 Tour::Tour(std::vector<int> permutationOrMutation, int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
-    this->tourCities.reserve(numCitiesInTour + 1);
+    this->tourCities.resize(numCitiesInTour + 1);
     createThisTourFromPermutationOrMutation(permutationOrMutation);
 }
 
@@ -138,11 +136,11 @@ int Tour::getNumCitiesInTour() {
 }
 
 //TESTING
-void Tour::printPermutationOrMuation() {
-    std::vector<int> permutationOrMutation = getCurrPermutationOrMutation();
-    for(int i = 0; i < permutationOrMutation.size(); ++i) {
-        std::cout << permutationOrMutation.at(i) << " ";
-    }
-    std::cout << std::endl;
-}
+// void Tour::printPermutationOrMutation() {
+//     std::vector<int> permutationOrMutation = getCurrPermutationOrMutation();
+//     for(int i = 0; i < permutationOrMutation.size(); ++i) {
+//         std::cout << permutationOrMutation.at(i) << " ";
+//     }
+//     std::cout << std::endl;
+// }
 //TESTING
