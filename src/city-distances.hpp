@@ -10,14 +10,14 @@ class CityDistances {
     const std::string DISTANCES_INPUT_FILE_NAME = "distances.txt";
 
     private:
-        float cityDistancesMatrix[MAX_NUM_CITIES][MAX_NUM_CITIES];
+        double cityDistancesMatrix[MAX_NUM_CITIES][MAX_NUM_CITIES];
         void fillCityDistancesFromInputFile();
         CityDistances();
         
     public:
         static CityDistances& getInst();
-        void setDistance(int departureCity, int arrivalCity, float distance);
-        float getDistance(int departureCity, int arrivalCity);
+        void setDistance(int departureCity, int arrivalCity, double distance);
+        double getDistance(int departureCity, int arrivalCity);
 
         // to ensure we wont ever make copies of our singleton
         CityDistances(CityDistances const&) = delete;
