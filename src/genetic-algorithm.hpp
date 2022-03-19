@@ -5,13 +5,17 @@
 
 #include <vector>
 
+//TESTING
+#include <iostream>
+//TESTING
+
 class GeneticAlgorithm {
 
     private:
         int numOfCities;
         int generationSize;
         int numGenerationsToRun;
-        float mutatedGenerationPercent;
+        int numMutationsInGeneration;
 
         std::vector<Tour> currGeneration;
         Tour elite;
@@ -24,6 +28,11 @@ class GeneticAlgorithm {
         GeneticAlgorithm(int numCities, int genSize, int numGensToRun, float mutatedGenPercent);
         void runGeneticAlgorithm();
         double getLowestFoundTourCost();
+        Tour getElite();
+
+        //TESTING
+        void printCurrGeneration();
+        //TESTING
 };
 
 #endif
