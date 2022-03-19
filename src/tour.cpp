@@ -111,17 +111,9 @@ Tour Tour::getNextPermutedTour() {
     return Tour(getNextPermutation(), numCitiesInTour);
 }
 
-// void Tour::setToNextPermutedTour() {
-//     createThisTourFromPermutationOrMutation(getNextPermutation());
-// }
-
 Tour Tour::getNewMutatedTour() {
     return Tour(getNewMutation(), numCitiesInTour);
 }
-
-// void Tour::setToNewMutatedTour() {
-//     createThisTourFromPermutationOrMutation(getNewMutation());
-// }
 
 void Tour::setTourCity(int cityIndex, int city) {
     tourCities[cityIndex] = city;
