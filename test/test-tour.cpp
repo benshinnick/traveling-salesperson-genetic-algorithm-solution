@@ -32,11 +32,11 @@ TEST_CASE("Test basic tour functionality") {
 }
 
 TEST_CASE("Test permutations") {
-    int testNumCities = 4;
+    int testNumCities = 5;
     Tour sut = Tour(testNumCities);
 
     sut.printPermutationOrMutation();
-    for(int i = 0; i < 5; ++i) {
+    for(int i = 0; i < 23; ++i) {
         sut = sut.getNextPermutedTour();
         REQUIRE(isValidTour(sut));
         sut.printPermutationOrMutation();
