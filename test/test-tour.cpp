@@ -33,16 +33,15 @@ TEST_CASE("Test basic tour functionality") {
 }
 
 TEST_CASE("Test permutations") {
-    int testNumCities = 4;
-	std::vector<int> testPermutation = {1, 2, 3};
-    
+    int testNumCities = 5;
+	std::vector<int> testPermutation = {1, 2, 3, 4};
     Tour sut = Tour(testPermutation, testNumCities);
 
-    // sut.printPermutationOrMutation();
-    for(int i = 0; i < 5; ++i) {
-        sut.setToNextPermutedTour();
+    sut.printPermutationOrMutation();
+    for(int i = 0; i < 23; ++i) {
+        sut = sut.getNextPermutedTour();
         REQUIRE(isValidTour(sut));
-        // sut.printPermutationOrMutation();
+        sut.printPermutationOrMutation();
     }
 
     REQUIRE(sut.getNumCitiesInTour() == testNumCities);
@@ -51,14 +50,13 @@ TEST_CASE("Test permutations") {
 TEST_CASE("Test mutations") {
     int testNumCities = 11;
 	std::vector<int> testPermutation = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    
     Tour sut = Tour(testPermutation, testNumCities);
 
-    // sut.printPermutationOrMutation();
+    sut.printPermutationOrMutation();
     for(int i = 0; i < 6; ++i) {
-        sut.setToNewMutatedTour();
+        sut = sut.getNewMutatedTour();
         REQUIRE(isValidTour(sut));
-        // sut.printPermutationOrMutation();
+        sut.printPermutationOrMutation();
     }
 
     REQUIRE(sut.getNumCitiesInTour() == testNumCities);

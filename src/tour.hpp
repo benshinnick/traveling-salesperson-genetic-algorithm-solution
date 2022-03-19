@@ -2,7 +2,7 @@
 #define TOUR_HPP
 
 //TESTING
-// #include <iostream>
+#include <iostream>
 //TESTING
 
 #include <vector>
@@ -32,16 +32,14 @@ class Tour {
         double getTourCost();
 
         Tour getNextPermutedTour();
-        void setToNextPermutedTour();
         Tour getNewMutatedTour();
-        void setToNewMutatedTour();
 
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
         int getNumCitiesInTour();
 
         //TESTING
-        // void printPermutationOrMutation();
+        void printPermutationOrMutation();
         //TESTING
 };
 

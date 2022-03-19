@@ -111,16 +111,8 @@ Tour Tour::getNextPermutedTour() {
     return Tour(getNextPermutation(), numCitiesInTour);
 }
 
-void Tour::setToNextPermutedTour() {
-    createThisTourFromPermutationOrMutation(getNextPermutation());
-}
-
 Tour Tour::getNewMutatedTour() {
     return Tour(getNewMutation(), numCitiesInTour);
-}
-
-void Tour::setToNewMutatedTour() {
-    createThisTourFromPermutationOrMutation(getNewMutation());
 }
 
 void Tour::setTourCity(int cityIndex, int city) {
@@ -136,11 +128,11 @@ int Tour::getNumCitiesInTour() {
 }
 
 //TESTING
-// void Tour::printPermutationOrMutation() {
-//     std::vector<int> permutationOrMutation = getCurrPermutationOrMutation();
-//     for(int i = 0; i < permutationOrMutation.size(); ++i) {
-//         std::cout << permutationOrMutation.at(i) << " ";
-//     }
-//     std::cout << std::endl;
-// }
+void Tour::printPermutationOrMutation() {
+    std::vector<int> permutationOrMutation = getCurrPermutationOrMutation();
+    for(int i = 0; i < permutationOrMutation.size(); ++i) {
+        std::cout << permutationOrMutation.at(i) << " ";
+    }
+    std::cout << std::endl;
+}
 //TESTING
