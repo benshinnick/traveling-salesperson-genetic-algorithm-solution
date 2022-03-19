@@ -5,32 +5,32 @@
 #include <iostream>
 //TESTING
 
-#include <vector>
 #include <random>
 
 #include "city-distances.hpp"
 
 class Tour {
 
+    static const int START_AND_END_CITY = 0;
+    static const int MAX_TOUR_SIZE = 21;
+
     private:
-        std::vector<int> tourCities;
+        int tourCities[MAX_TOUR_SIZE];
         int numCitiesInTour;
         double calculateTourCost();
 
-        void createThisTourFromPermutationOrMutation(std::vector<int> permutationOrMutation);
+        void createThisTourFromPermutationOrMutation(int permutationOrMutation[]);
         void setToDefaultTour();
-        std::vector<int> getCurrPermutationOrMutation();
-        std::vector<int> getNextPermutation();
-        std::vector<int> getNewMutation();
+        void setArrayToCurrPermutationOrMutation(int array[]);
+        void setArrayToNextPermutation(int array[]);
+        void setArrayToNewMutation(int array[]);
 
-        void swap(std::vector<int>& array, int index1, int index2);
+        void swap(int array[], int index1, int index2);
         int getRandomIntInRange(int min, int max);
 
     public:
-        static const int START_AND_END_CITY = 0;
-        
         Tour(int numCitiesInTour);
-        Tour(std::vector<int> permutationOrMutation, int numCitiesInTour);
+        Tour(int permutationOrMutation[], int numCitiesInTour);
         double getTourCost();
 
         Tour getNextPermutedTour();
