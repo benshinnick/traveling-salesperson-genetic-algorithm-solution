@@ -19,7 +19,7 @@ void BruteForceAlgorithm::runBruteFoceAlgorithm() {
     lowestTourCost = currTour.getTourCost();
     int numOfPermutations = calculateFactorial(numOfCities - 1);
     for(int i = 0; i < numOfPermutations - 1; ++i) {
-        currTour = currTour.getNextPermutedTour();
+        currTour.setToNextPermutedTour();
         double currTourCost = currTour.getTourCost();
         if(currTourCost < lowestTourCost) lowestTourCost = currTourCost;
     }
