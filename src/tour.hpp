@@ -20,7 +20,7 @@ class Tour {
         double calculateTourCost();
 
         void createThisTourFromPermutationOrMutation(std::vector<int> permutationOrMutation);
-        std::vector<int> getDefaultPermuation();
+        void setToDefaultPermutation();
         std::vector<int> getCurrPermutationOrMutation();
         std::vector<int> getNextPermutation();
         std::vector<int> getNewMutation();
