@@ -12,71 +12,71 @@ double Tour::calculateTourCost() {
     return totalCost;
 }
 
-void Tour::createThisTourFromPermutationOrMutation(std::vector<int> permutationOrMutation) {
-    std::vector<int> permutationOrMutationCopy = permutationOrMutation;
+void Tour::createThisTourFromPermutationOrMutation(int permutationOrMutation[]) {
     int startingIndex = 0, endingIndex = numCitiesInTour;
 
     tourCities[startingIndex] = START_AND_END_CITY;
     for(int i = 1; i < numCitiesInTour; ++i) {
-        tourCities[i] = permutationOrMutationCopy[i-1];
+        tourCities[i] = permutationOrMutation[i-1];
     }
     tourCities[endingIndex] = START_AND_END_CITY;
 }
 
-std::vector<int> Tour::getDefaultPermuation() {
-    std::vector<int> currPermuationOrMutation(numCitiesInTour - 1);
+void Tour::setToDefaultTour() {
+    int startingIndex = 0, endingIndex = numCitiesInTour;
+
+    tourCities[startingIndex] = START_AND_END_CITY;
     int currCity = 0;
-    for(int i = 0; i < numCitiesInTour; ++i) {
+    for(int i = 1; i < numCitiesInTour; ++i) {
         if(currCity == START_AND_END_CITY) currCity++;
-        currPermuationOrMutation[i] = currCity;
+        tourCities[i] = currCity;
         currCity++;
     }
-    return currPermuationOrMutation;
+    tourCities[endingIndex] = START_AND_END_CITY;
 }
 
-std::vector<int> Tour::getCurrPermutationOrMutation() {
-    std::vector<int> currPermuationOrMutation(numCitiesInTour - 1);
+void Tour::setArrayToCurrPermutationOrMutation(int array[]) {
     for(int i = 0; i < numCitiesInTour; ++i) {
-        currPermuationOrMutation[i] = tourCities[i+1];
+        array[i] = tourCities[i+1];
     }
-    return currPermuationOrMutation;
 }
 
-std::vector<int> Tour::getNextPermutation() {
-    std::vector<int> nextPermuation = getCurrPermutationOrMutation();
+void Tour::setArrayToNextPermutation(int array[]) {
+    setArrayToCurrPermutationOrMutation(array);
+
     const int NUM_ELEMENTS = numCitiesInTour - 1;
 
     int m = NUM_ELEMENTS - 2;
-    while(nextPermuation[m] > nextPermuation[m+1]) m--;
+    while(array[m] > array[m+1]) m--;
 
     int k = NUM_ELEMENTS - 1;
-    while(nextPermuation[m] > nextPermuation[k]) k--;
+    while(array[m] > array[k]) k--;
 
-    swap(nextPermuation, m, k);
+    swap(array, m, k);
     int p = m + 1;
     int q = NUM_ELEMENTS - 1;
     while(p < q) {
-        swap(nextPermuation, p, q);
+        swap(array, p, q);
         p++;
         q--;
     }
-
-    return nextPermuation;
 }
 
-std::vector<int> Tour::getNewMutation() {
-    std::vector<int> newMutation = getCurrPermutationOrMutation();
+void Tour::setArrayToNewMutation(int array[]) {
+    setArrayToCurrPermutationOrMutation(array);
+
+    const int MUTATION_SIZE = numCitiesInTour - 1;
     const int NUM_OF_MUTATION_SWAPS = 4;
 
     int minIndex = 0;
-    int midIndex = newMutation.size() / 2;
-    int maxIndex = newMutation.size() - 1;
+    int midIndex = MUTATION_SIZE / 2;
+    int maxIndex = MUTATION_SIZE - 1;
 
     for(int i = 0; i < NUM_OF_MUTATION_SWAPS; ++i) {
         if(i % 2 == 0) {
             // swap city from first half with any other city in the tour
             swap(
-                newMutation,
+                array,
                 getRandomIntInRange(minIndex, midIndex),
                 getRandomIntInRange(minIndex, maxIndex)
             );
@@ -84,17 +84,15 @@ std::vector<int> Tour::getNewMutation() {
         else {
             // swap city from first half with a city from last half of the tour
             swap(
-                newMutation,
+                array,
                 getRandomIntInRange(minIndex, midIndex),
                 getRandomIntInRange(midIndex+1, maxIndex)
             );
         }
     }
-
-    return newMutation;
 }
 
-void Tour::swap(std::vector<int>& array, int index1, int index2) {
+void Tour::swap(int array[], int index1, int index2) {
     int temp = array[index1];
     array[index1] = array[index2];
     array[index2] = temp;
@@ -110,16 +108,11 @@ int Tour::getRandomIntInRange(int min, int max) {
 // Public
 Tour::Tour(int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
-    this->tourCities.resize(numCitiesInTour + 1);
-
-    std::vector<int> defaultPermutation(numCitiesInTour - 1);
-    defaultPermutation = getDefaultPermuation();
-    createThisTourFromPermutationOrMutation(defaultPermutation);
+    setToDefaultTour();
 }
 
-Tour::Tour(std::vector<int> permutationOrMutation, int numCitiesInTour) {
+Tour::Tour(int permutationOrMutation[], int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
-    this->tourCities.resize(numCitiesInTour + 1);
     createThisTourFromPermutationOrMutation(permutationOrMutation);
 }
 
@@ -127,12 +120,28 @@ double Tour::getTourCost() {
     return calculateTourCost();
 }
 
+void Tour::setToNextPermutedTour() {
+    int nextPermutation[numCitiesInTour - 1];
+    setArrayToNextPermutation(nextPermutation);
+    createThisTourFromPermutationOrMutation(nextPermutation);
+}
+
 Tour Tour::getNextPermutedTour() {
-    return Tour(getNextPermutation(), numCitiesInTour);
+    int nextPermutation[numCitiesInTour - 1];
+    setArrayToNextPermutation(nextPermutation);
+    return Tour(nextPermutation, numCitiesInTour);
+}
+
+void Tour::setToNewMutatedTour() {
+    int newMutation[numCitiesInTour - 1];
+    setArrayToNewMutation(newMutation);
+    createThisTourFromPermutationOrMutation(newMutation);
 }
 
 Tour Tour::getNewMutatedTour() {
-    return Tour(getNewMutation(), numCitiesInTour);
+    int newMutation[numCitiesInTour - 1];
+    setArrayToNewMutation(newMutation);
+    return Tour(newMutation, numCitiesInTour);
 }
 
 void Tour::setTourCity(int cityIndex, int city) {
@@ -149,9 +158,10 @@ int Tour::getNumCitiesInTour() {
 
 //TESTING
 void Tour::printPermutationOrMutation() {
-    std::vector<int> permutationOrMutation = getCurrPermutationOrMutation();
-    for(int i = 0; i < permutationOrMutation.size(); ++i) {
-        std::cout << permutationOrMutation.at(i) << " ";
+    int array[MAX_TOUR_SIZE];
+    setArrayToCurrPermutationOrMutation(array);
+    for(int i = 0; i < numCitiesInTour - 1; ++i) {
+        std::cout << array[i] << " ";
     }
     std::cout << std::endl;
 }
