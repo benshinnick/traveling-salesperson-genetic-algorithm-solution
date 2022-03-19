@@ -8,7 +8,7 @@ class BruteForceAlgorithm {
     private:
         int numOfCities;
         double lowestTourCost;
-        // Tour currTour; // should only need in runBruteForceAlgorithm()
+        int calculateFactorial(int n);
 
     public:
         BruteForceAlgorithm(int numOfCities);

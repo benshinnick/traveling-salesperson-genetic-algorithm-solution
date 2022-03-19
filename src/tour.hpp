@@ -20,6 +20,7 @@ class Tour {
         double calculateTourCost();
 
         void createThisTourFromPermutationOrMutation(std::vector<int> permutationOrMutation);
+        std::vector<int> getDefaultPermuation();
         std::vector<int> getCurrPermutationOrMutation();
         std::vector<int> getNextPermutation();
         std::vector<int> getNewMutation();
@@ -28,6 +29,7 @@ class Tour {
         int getRandomIntInRange(int min, int max);
 
     public:
+        Tour(int numCitiesInTour);
         Tour(std::vector<int> permutationOrMutation, int numCitiesInTour);
         double getTourCost();
 
