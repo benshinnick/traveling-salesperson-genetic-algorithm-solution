@@ -23,20 +23,21 @@ class Tour {
         void setToDefaultTour();
         void setArrayToCurrPermutationOrMutation(int array[]);
         void setArrayToNextPermutation(int array[]);
-        void setArrayToNewMutation(int array[]);
+        void setArrayToNewMutation(int array[], int numOfMutationSwaps);
 
         void swap(int array[], int index1, int index2);
         int getRandomIntInRange(int min, int max);
 
     public:
+        Tour();
         Tour(int numCitiesInTour);
         Tour(int permutationOrMutation[], int numCitiesInTour);
         double getTourCost();
 
         void setToNextPermutedTour();
         Tour getNextPermutedTour();
-        void setToNewMutatedTour();
-        Tour getNewMutatedTour();
+        void setToNewMutatedTour(int numOfMutationSwaps);
+        Tour getNewMutatedTour(int numOfMutationSwaps);
 
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);

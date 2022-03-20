@@ -62,17 +62,16 @@ void Tour::setArrayToNextPermutation(int array[]) {
     }
 }
 
-void Tour::setArrayToNewMutation(int array[]) {
+void Tour::setArrayToNewMutation(int array[], int numOfMutationSwaps) {
     setArrayToCurrPermutationOrMutation(array);
 
     const int MUTATION_SIZE = numCitiesInTour - 1;
-    const int NUM_OF_MUTATION_SWAPS = 4;
 
     int minIndex = 0;
     int midIndex = MUTATION_SIZE / 2;
     int maxIndex = MUTATION_SIZE - 1;
 
-    for(int i = 0; i < NUM_OF_MUTATION_SWAPS; ++i) {
+    for(int i = 0; i < numOfMutationSwaps; ++i) {
         if(i % 2 == 0) {
             // swap city from first half with any other city in the tour
             swap(
@@ -106,6 +105,12 @@ int Tour::getRandomIntInRange(int min, int max) {
 }
 
 // Public
+Tour::Tour() {
+    // num cities set to 10 by default
+    this->numCitiesInTour = 10;
+    setToDefaultTour();
+}
+
 Tour::Tour(int numCitiesInTour) {
     this->numCitiesInTour = numCitiesInTour;
     setToDefaultTour();
@@ -121,26 +126,26 @@ double Tour::getTourCost() {
 }
 
 void Tour::setToNextPermutedTour() {
-    int nextPermutation[numCitiesInTour - 1];
+    int nextPermutation[MAX_TOUR_SIZE - 2];
     setArrayToNextPermutation(nextPermutation);
     createThisTourFromPermutationOrMutation(nextPermutation);
 }
 
 Tour Tour::getNextPermutedTour() {
-    int nextPermutation[numCitiesInTour - 1];
+    int nextPermutation[MAX_TOUR_SIZE - 2];
     setArrayToNextPermutation(nextPermutation);
     return Tour(nextPermutation, numCitiesInTour);
 }
 
-void Tour::setToNewMutatedTour() {
-    int newMutation[numCitiesInTour - 1];
-    setArrayToNewMutation(newMutation);
+void Tour::setToNewMutatedTour(int numOfMutationSwaps) {
+    int newMutation[MAX_TOUR_SIZE - 2];
+    setArrayToNewMutation(newMutation, numOfMutationSwaps);
     createThisTourFromPermutationOrMutation(newMutation);
 }
 
-Tour Tour::getNewMutatedTour() {
-    int newMutation[numCitiesInTour - 1];
-    setArrayToNewMutation(newMutation);
+Tour Tour::getNewMutatedTour(int numOfMutationSwaps) {
+    int newMutation[MAX_TOUR_SIZE - 2];
+    setArrayToNewMutation(newMutation, numOfMutationSwaps);
     return Tour(newMutation, numCitiesInTour);
 }
 

@@ -21,6 +21,7 @@ test-all: $(TESTS)
 test-city-distances: test/test-city-distances.cpp src/city-distances.o
 test-tour: test/test-tour.cpp src/tour.o src/city-distances.o
 test-brute-force: test/test-brute-force.cpp src/brute-force-algorithm.o src/tour.o src/city-distances.o
+test-genetic: test/test-genetic.cpp src/genetic-algorithm.o src/tour.o src/city-distances.o
 
 clean:
 	rm -rf *.dSYM
