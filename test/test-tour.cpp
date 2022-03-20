@@ -46,7 +46,7 @@ TEST_CASE("Test permutations") {
 }
 
 TEST_CASE("Test mutations") {
-    int testNumCities = 11;
+    int testNumCities = 9;
     Tour sut = Tour(testNumCities);
 
     sut.printPermutationOrMutation();

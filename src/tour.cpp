@@ -126,25 +126,25 @@ double Tour::getTourCost() {
 }
 
 void Tour::setToNextPermutedTour() {
-    int nextPermutation[numCitiesInTour - 1];
+    int nextPermutation[MAX_TOUR_SIZE - 2];
     setArrayToNextPermutation(nextPermutation);
     createThisTourFromPermutationOrMutation(nextPermutation);
 }
 
 Tour Tour::getNextPermutedTour() {
-    int nextPermutation[numCitiesInTour - 1];
+    int nextPermutation[MAX_TOUR_SIZE - 2];
     setArrayToNextPermutation(nextPermutation);
     return Tour(nextPermutation, numCitiesInTour);
 }
 
 void Tour::setToNewMutatedTour(int numOfMutationSwaps) {
-    int newMutation[numCitiesInTour - 1];
+    int newMutation[MAX_TOUR_SIZE - 2];
     setArrayToNewMutation(newMutation, numOfMutationSwaps);
     createThisTourFromPermutationOrMutation(newMutation);
 }
 
 Tour Tour::getNewMutatedTour(int numOfMutationSwaps) {
-    int newMutation[numCitiesInTour - 1];
+    int newMutation[MAX_TOUR_SIZE - 2];
     setArrayToNewMutation(newMutation, numOfMutationSwaps);
     return Tour(newMutation, numCitiesInTour);
 }

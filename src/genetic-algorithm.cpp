@@ -9,7 +9,16 @@ void GeneticAlgorithm::setInitialGeneration() {
 }
 
 void GeneticAlgorithm::setNextGeneration() {
-
+    int i;
+    currGeneration.at(0) = elite;
+    for(i = 1; i < numMutationsInGeneration+1; ++i) {
+        int numEliteMutationSwaps = 1, numMutationSwaps = 5;
+        if(i % 3 == 0) currGeneration.at(i) = elite.getNewMutatedTour(numEliteMutationSwaps);
+        else currGeneration.at(i).setToNewMutatedTour(numMutationSwaps);
+    }
+    for(i = i; i < generationSize; ++i) {
+        currGeneration.at(i).setToNextPermutedTour();
+    }
 }
 
 void GeneticAlgorithm::updateElite() {
@@ -33,7 +42,11 @@ GeneticAlgorithm::GeneticAlgorithm(int numCities, int genSize, int numGensToRun,
 }
 
 void GeneticAlgorithm::runGeneticAlgorithm() {
-
+    for(int i = 0; i < numGenerationsToRun - 1; ++i) {
+        setNextGeneration();
+        updateElite();
+        std::cout << elite.getTourCost() << std::endl;
+    }
 }
 
 double GeneticAlgorithm::getLowestFoundTourCost() {
