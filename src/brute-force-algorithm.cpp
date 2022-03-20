@@ -11,20 +11,20 @@ int BruteForceAlgorithm::calculateFactorial(int n) {
 
 BruteForceAlgorithm::BruteForceAlgorithm(int numOfCities) {
     this->numOfCities = numOfCities;
-    this->lowestTourCost = -1;
+    this->optimalTourCost = -1;
 }
 
-void BruteForceAlgorithm::runBruteFoceAlgorithm() {
+void BruteForceAlgorithm::runBruteForceAlgorithm() {
     Tour currTour = Tour(numOfCities);
-    lowestTourCost = currTour.getTourCost();
+    optimalTourCost = currTour.getTourCost();
     int numOfPermutations = calculateFactorial(numOfCities - 1);
     for(int i = 0; i < numOfPermutations - 1; ++i) {
         currTour.setToNextPermutedTour();
         double currTourCost = currTour.getTourCost();
-        if(currTourCost < lowestTourCost) lowestTourCost = currTourCost;
+        if(currTourCost < optimalTourCost) optimalTourCost = currTourCost;
     }
 }
 
-double BruteForceAlgorithm::getLowestFoundTourCost() {
-    return lowestTourCost;
+double BruteForceAlgorithm::getOptimalTourCost() {
+    return optimalTourCost;
 }

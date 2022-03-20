@@ -7,13 +7,13 @@ class BruteForceAlgorithm {
 
     private:
         int numOfCities;
-        double lowestTourCost;
+        double optimalTourCost;
         int calculateFactorial(int n);
 
     public:
         BruteForceAlgorithm(int numOfCities);
-        void runBruteFoceAlgorithm();
-        double getLowestFoundTourCost();
+        void runBruteForceAlgorithm();
+        double getOptimalTourCost();
 };
 
 #endif
