@@ -18,3 +18,9 @@ TEST_CASE("Test Brute Force NumCities = 7") {
     sut.runBruteFoceAlgorithm();
 	REQUIRE(sut.getLowestFoundTourCost() > 0);
 }
+
+TEST_CASE("Test Brute Force NumCities = 8") {
+    BruteForceAlgorithm sut = BruteForceAlgorithm(8);
+    sut.runBruteFoceAlgorithm();
+	REQUIRE(sut.getLowestFoundTourCost() > 0);
+}

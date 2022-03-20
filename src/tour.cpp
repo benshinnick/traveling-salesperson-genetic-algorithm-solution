@@ -52,11 +52,13 @@ void Tour::setArrayToNextPermutation(int array[]) {
     int k = NUM_ELEMENTS - 1;
     while(array[m] > array[k]) k--;
 
-    swap(array, m, k);
+    // permutations like 4,3,2,1 might dip into negative indexes
+    if(m >= 0 && k >= 0) swap(array, m, k);
     int p = m + 1;
     int q = NUM_ELEMENTS - 1;
     while(p < q) {
-        swap(array, p, q);
+        // permutations like 4,3,2,1 might dip into negative indexes
+        if(p >= 0 && q >= 0) swap(array, p, q);
         p++;
         q--;
     }
