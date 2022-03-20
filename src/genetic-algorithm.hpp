@@ -28,6 +28,7 @@ class GeneticAlgorithm {
         GeneticAlgorithm(int numCities, int genSize, int numGensToRun, float mutatedGenPercent);
         void runGeneticAlgorithm();
         double getLowestFoundTourCost();
+        double getPercentOptimal(double optimalTourCost);
         Tour getElite();
 
         //TESTING

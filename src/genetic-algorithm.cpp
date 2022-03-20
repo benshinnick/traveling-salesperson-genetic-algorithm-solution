@@ -51,6 +51,10 @@ double GeneticAlgorithm::getLowestFoundTourCost() {
     return elite.getTourCost();
 }
 
+double GeneticAlgorithm::getPercentOptimal(double optimalTourCost)  {
+    return getLowestFoundTourCost()/optimalTourCost * 100;
+}
+
 Tour GeneticAlgorithm::getElite() {
     return elite;
 }
