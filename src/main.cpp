@@ -6,6 +6,9 @@
 
 #include <iostream>
 
+#include <sys/time.h>
+#include <unistd.h>
+
 #include "brute-force-algorithm.hpp"
 #include "genetic-algorithm.hpp"
 
@@ -40,29 +43,42 @@ void printHeader(std::string headerText) {
     printDivider();
 }
 
+long getAlgorithmTimeMS(timeval startTime, timeval endTime) {
+    long seconds = endTime.tv_sec - startTime.tv_sec;
+    long useconds = endTime.tv_usec - startTime.tv_usec;
+    return ((seconds) * 1000 + useconds/1000.0);
+}
+
 int main() {
-    printHeader("Traveling Salesperson Problem Input");
+    printHeader("Traveling Salesperson Problem");
     int numCities = promptUserForInt("Please enter the number of cities in a tour");
     int genSize = promptUserForInt("Please enter the number of tours in each generation");
     int numGensToRun = promptUserForInt("Please enter the number of generations to run");
     float mutatedGenPercent = promptUserForPercent("Please enter the percent of mutated tours in a generation");
 
     printHeader("Running The Algorithms");
+    struct timeval startTime, endTime;
 
+    gettimeofday(&startTime, NULL);
     std::cout << "running brute force algorithm..." << std::endl;
     BruteForceAlgorithm bruteForce = BruteForceAlgorithm(numCities);
     bruteForce.runBruteForceAlgorithm();
+    gettimeofday(&endTime, NULL);
+    long bruteForceTimeMS = getAlgorithmTimeMS(startTime, endTime);
 
+    gettimeofday(&startTime, NULL);
     std::cout << "running genetic algorithm..." << std::endl;
     GeneticAlgorithm genetic = GeneticAlgorithm(numCities, genSize, numGensToRun, mutatedGenPercent);
     genetic.runGeneticAlgorithm();
+    gettimeofday(&endTime, NULL);
+    long geneticTimeMS = getAlgorithmTimeMS(startTime, endTime);
 
     printHeader("Results");
     std::cout << "Number of cities run = " << numCities << std::endl;
     std::cout << "Optimal tour cost from brute force = " << bruteForce.getOptimalTourCost() << std::endl;
-    // add time it took brute force to run
+    std::cout << "Brute force time = " << bruteForceTimeMS << "ms" << std::endl;
     std::cout << "Lowest tour cost found from genetic = " << genetic.getLowestFoundTourCost() << std::endl;
-    // add time it took genetic to run
+    std::cout << "Genetic time = " << geneticTimeMS << "ms"  << std::endl;
     std::cout << "Genetic algorithm percent of optimal = " << genetic.getPercentOptimal(bruteForce.getOptimalTourCost()) << std::endl;
     printDivider();
 }
