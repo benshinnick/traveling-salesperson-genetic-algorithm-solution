@@ -82,12 +82,20 @@ void Tour::setArrayToNewMutation(int array[], int numOfMutationSwaps) {
                 getRandomIntInRange(minIndex, maxIndex)
             );
         }
-        else {
+        if(i % 3 == 0) {
             // swap city from first half with a city from last half of the tour
             swap(
                 array,
                 getRandomIntInRange(minIndex, midIndex),
                 getRandomIntInRange(midIndex+1, maxIndex)
+            );
+        }
+        else {
+            // swap two values in the first half of the tour
+            swap(
+                array,
+                getRandomIntInRange(minIndex, midIndex),
+                getRandomIntInRange(minIndex, midIndex+1)
             );
         }
     }
