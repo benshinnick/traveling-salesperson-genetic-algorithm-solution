@@ -47,5 +47,4 @@ int main() {
     int genSize = promptUserForInt("Please enter the number of tours in each generation");
     int numGensToRun = promptUserForInt("Please enter the number of generations to run");
     float mutatedGenPercent = promptUserForPercent("Please enter the percent of a generation comprised of mutated tours");
-    std::cout << "Hello World!" << std::endl;
 }
