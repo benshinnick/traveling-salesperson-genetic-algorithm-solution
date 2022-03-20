@@ -2,18 +2,26 @@
 
 void GeneticAlgorithm::setInitialGeneration() {
     Tour initialTour = Tour(numOfCities);
+    int numInitialMutationSwaps = 5;
+    //First generation made up of inital default tour mutations
     for(int i = 0; i < generationSize; ++i) {
-        currGeneration.at(i) = initialTour.getNewMutatedTour(5);
+        currGeneration.at(i) = initialTour.getNewMutatedTour(numInitialMutationSwaps);
     }
 }
 
 void GeneticAlgorithm::setNextGeneration() {
     int i;
+    int numEliteMutationSwaps = 1, numMutationSwaps = 2;
+    if(numOfCities > 11) numMutationSwaps = 4;
+    
     currGeneration.at(0) = elite;
     for(i = 1; i < numMutationsInGeneration+1; ++i) {
-        int numEliteMutationSwaps = 1, numMutationSwaps = 5;
         if(i % 3 == 0) currGeneration.at(i) = elite.getNewMutatedTour(numEliteMutationSwaps);
         else currGeneration.at(i).setToNewMutatedTour(numMutationSwaps);
+    }
+    if(i < generationSize) {
+        currGeneration.at(i) = elite.getNextPermutedTour();
+        i++;
     }
     for(; i < generationSize; ++i) {
         currGeneration.at(i).setToNextPermutedTour();
@@ -44,6 +52,7 @@ void GeneticAlgorithm::runGeneticAlgorithm() {
     for(int i = 0; i < numGenerationsToRun - 1; ++i) {
         setNextGeneration();
         updateElite();
+        std::cout << "Gen" << i + 2 << " elite cost: " << elite.getTourCost() << std::endl;
     }
 }
 

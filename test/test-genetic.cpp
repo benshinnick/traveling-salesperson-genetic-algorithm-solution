@@ -10,7 +10,7 @@ TEST_CASE("Test Genetic numCities = 5") {
     sut.runGeneticAlgorithm();
     // sut.printCurrGeneration();
     REQUIRE(sut.getLowestFoundTourCost() <= initialLowestCost);
-    REQUIRE(sut.getPercentOptimal(264.7) >= 100);
+    REQUIRE(sut.getPercentOptimal(264.7) >= 99.9);
 }
 
 TEST_CASE("Test Genetic numCities = 8") {
@@ -22,7 +22,7 @@ TEST_CASE("Test Genetic numCities = 8") {
     sut.runGeneticAlgorithm();
     // sut.printCurrGeneration();
     REQUIRE(sut.getLowestFoundTourCost() <= initialLowestCost);
-    REQUIRE(sut.getPercentOptimal(315.85) >= 100);
+    REQUIRE(sut.getPercentOptimal(315.85) >= 99.9);
 }
 
 TEST_CASE("Test Genetic numCities = 12") {
