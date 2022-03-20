@@ -51,7 +51,7 @@ TEST_CASE("Test mutations") {
 
     sut.printPermutationOrMutation();
     for(int i = 0; i < 6; ++i) {
-        sut.setToNewMutatedTour();
+        sut.setToNewMutatedTour(2);
         REQUIRE(isValidTour(sut));
         sut.printPermutationOrMutation();
     }
