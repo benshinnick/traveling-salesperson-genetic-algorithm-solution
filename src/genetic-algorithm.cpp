@@ -52,7 +52,6 @@ void GeneticAlgorithm::runGeneticAlgorithm() {
     for(int i = 0; i < numGenerationsToRun - 1; ++i) {
         setNextGeneration();
         updateElite();
-        std::cout << "Gen" << i + 2 << " elite cost: " << elite.getTourCost() << std::endl;
     }
 }
 
