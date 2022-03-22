@@ -28,11 +28,11 @@ Here is a basic approach (based upon an algorithm presented at Wikipedia) to sol
 
 Make a minor change (for instance, randomly swap two, three, or four cities) to make a different version of an already good order.
 
-## Crossovers:
+### Crossovers:
 
 Splice the end of one ordering to the end of another. This is not simple to realize with permutation problems (why?)
 
-## Elites
+### Elites
 
 Keep the few best tours as-is.
 
