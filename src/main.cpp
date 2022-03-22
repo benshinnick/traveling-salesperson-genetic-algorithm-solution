@@ -79,6 +79,6 @@ int main() {
     std::cout << "Brute force time = " << bruteForceTimeMS << "ms" << std::endl;
     std::cout << "Lowest tour cost found from genetic = " << genetic.getLowestFoundTourCost() << std::endl;
     std::cout << "Genetic time = " << geneticTimeMS << "ms"  << std::endl;
-    std::cout << "Genetic algorithm percent of optimal = " << genetic.getPercentOptimal(bruteForce.getOptimalTourCost()) << std::endl;
+    std::cout << "Genetic algorithm percent of optimal = " << genetic.getPercentOptimal(bruteForce.getOptimalTourCost()) << "%" << std::endl;
     printDivider();
 }
