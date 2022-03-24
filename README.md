@@ -1,4 +1,4 @@
-# traveling-salesperson-genetic-algorithm-solution
+# Traveling Salesperson Genetic Algorithm Solution
 C++ Project that implements a genetic algorithm solution to the traveling salesperson problem and compares it to the optimal solution found via a brute force approach
 
 # Project Instructions
