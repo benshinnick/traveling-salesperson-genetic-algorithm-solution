@@ -35,11 +35,11 @@ TEST_CASE("Test permutations") {
     int testNumCities = 5;
     Tour sut = Tour(testNumCities);
 
-    sut.printPermutationOrMutation();
+    // sut.printPermutationOrMutation();
     for(int i = 0; i < 23; ++i) {
         sut.setToNextPermutedTour();
         REQUIRE(isValidTour(sut));
-        sut.printPermutationOrMutation();
+        // sut.printPermutationOrMutation();
     }
 
     REQUIRE(sut.getNumCitiesInTour() == testNumCities);
@@ -49,11 +49,11 @@ TEST_CASE("Test mutations") {
     int testNumCities = 9;
     Tour sut = Tour(testNumCities);
 
-    sut.printPermutationOrMutation();
+    // sut.printPermutationOrMutation();
     for(int i = 0; i < 6; ++i) {
         sut.setToNewMutatedTour(2);
         REQUIRE(isValidTour(sut));
-        sut.printPermutationOrMutation();
+        // sut.printPermutationOrMutation();
     }
 
     REQUIRE(sut.getNumCitiesInTour() == testNumCities);

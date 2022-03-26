@@ -6,7 +6,7 @@ void GeneticAlgorithm::setInitialGeneration() {
 
     Tour initialTour = Tour(numOfCities, gen);
     int numInitialMutationSwaps = 5;
-    //First generation made up of inital default tour mutations
+    //First generation made up of mutated tours
     for(int i = 0; i < generationSize; ++i) {
         currGeneration[i] = initialTour.getNewMutatedTour(numInitialMutationSwaps);
     }
@@ -69,16 +69,3 @@ double GeneticAlgorithm::getPercentOptimal(double optimalTourCost)  {
 Tour GeneticAlgorithm::getElite() {
     return elite;
 }
-
-//TESTING
-void GeneticAlgorithm::printCurrGeneration() {
-    std::cout << "Num Cities = " << numOfCities << std::endl;
-    std::cout << "Gen Size = " << generationSize << std::endl;
-    std::cout << "Num Gens to run = " << numGenerationsToRun << std::endl;
-    std::cout << "Num Mutations in Gen = " << numMutationsInGeneration << std::endl;
-    for(int i = 0; i < generationSize; ++i) {
-        currGeneration[i].printPermutationOrMutation();
-        // std::cout << "Tour Cost: " <<  currGeneration[i).getTourCost() << std::endl;
-    }
-}
-//TESTING

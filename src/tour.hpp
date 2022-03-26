@@ -1,10 +1,6 @@
 #ifndef TOUR_HPP
 #define TOUR_HPP
 
-//TESTING
-#include <iostream>
-//TESTING
-
 #include <random>
 
 #include "city-distances.hpp"
@@ -46,10 +42,6 @@ class Tour {
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
         int getNumCitiesInTour();
-
-        //TESTING
-        void printPermutationOrMutation();
-        //TESTING
 };
 
 #endif

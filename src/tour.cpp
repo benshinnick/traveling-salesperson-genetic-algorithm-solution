@@ -108,11 +108,12 @@ void Tour::swap(int array[], int index1, int index2) {
 }
 
 int Tour::getRandomIntInRange(int min, int max) {
-    std::uniform_int_distribution<> distr(min, max); // define the range
+    std::uniform_int_distribution<> distr(min, max);
     return distr(this->gen);
 }
 
 // Public
+
 Tour::Tour() {
     this->numCitiesInTour = 10;
     setToDefaultTour();
@@ -179,14 +180,3 @@ int Tour::getTourCity(int cityIndex) {
 int Tour::getNumCitiesInTour() {
     return numCitiesInTour;
 }
-
-//TESTING
-void Tour::printPermutationOrMutation() {
-    int array[MAX_TOUR_SIZE];
-    setArrayToCurrPermutationOrMutation(array);
-    for(int i = 0; i < numCitiesInTour - 1; ++i) {
-        std::cout << array[i] << " ";
-    }
-    std::cout << std::endl;
-}
-//TESTING

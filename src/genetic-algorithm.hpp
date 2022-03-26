@@ -5,10 +5,6 @@
 
 #include <vector>
 
-//TESTING
-#include <iostream>
-//TESTING
-
 class GeneticAlgorithm {
 
     private:
@@ -30,10 +26,6 @@ class GeneticAlgorithm {
         double getLowestFoundTourCost();
         double getPercentOptimal(double optimalTourCost);
         Tour getElite();
-
-        //TESTING
-        void printCurrGeneration();
-        //TESTING
 };
 
 #endif
