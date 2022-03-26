@@ -5,7 +5,7 @@ void GeneticAlgorithm::setInitialGeneration() {
     int numInitialMutationSwaps = 5;
     //First generation made up of inital default tour mutations
     for(int i = 0; i < generationSize; ++i) {
-        currGeneration.at(i) = initialTour.getNewMutatedTour(numInitialMutationSwaps);
+        currGeneration[i] = initialTour.getNewMutatedTour(numInitialMutationSwaps);
     }
 }
 
@@ -14,25 +14,25 @@ void GeneticAlgorithm::setNextGeneration() {
     int numEliteMutationSwaps = 1, numMutationSwaps = 2;
     if(numOfCities > 11) numMutationSwaps = 4;
     
-    currGeneration.at(0) = elite;
+    currGeneration[0] = elite;
     for(i = 1; i < numMutationsInGeneration+1; ++i) {
-        if(i % 3 == 0) currGeneration.at(i) = elite.getNewMutatedTour(numEliteMutationSwaps);
-        else currGeneration.at(i).setToNewMutatedTour(numMutationSwaps);
+        if(i % 3 == 0) currGeneration[i] = elite.getNewMutatedTour(numEliteMutationSwaps);
+        else currGeneration[i].setToNewMutatedTour(numMutationSwaps);
     }
     if(i < generationSize) {
-        currGeneration.at(i) = elite.getNextPermutedTour();
+        currGeneration[i] = elite.getNextPermutedTour();
         i++;
     }
     for(; i < generationSize; ++i) {
-        currGeneration.at(i).setToNextPermutedTour();
+        currGeneration[i].setToNextPermutedTour();
     }
 }
 
 void GeneticAlgorithm::updateElite() {
-    Tour foundElite = currGeneration.at(0);
+    Tour foundElite = currGeneration[0];
     for(int i = 0; i < generationSize; ++i) {
-        if(foundElite.getTourCost() > currGeneration.at(i).getTourCost())
-            foundElite = currGeneration.at(i);
+        if(foundElite.getTourCost() > currGeneration[i].getTourCost())
+            foundElite = currGeneration[i];
     }
     elite = foundElite;
 }
@@ -74,8 +74,8 @@ void GeneticAlgorithm::printCurrGeneration() {
     std::cout << "Num Gens to run = " << numGenerationsToRun << std::endl;
     std::cout << "Num Mutations in Gen = " << numMutationsInGeneration << std::endl;
     for(int i = 0; i < generationSize; ++i) {
-        currGeneration.at(i).printPermutationOrMutation();
-        // std::cout << "Tour Cost: " <<  currGeneration.at(i).getTourCost() << std::endl;
+        currGeneration[i].printPermutationOrMutation();
+        // std::cout << "Tour Cost: " <<  currGeneration[i).getTourCost() << std::endl;
     }
 }
 //TESTING
