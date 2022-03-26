@@ -19,6 +19,8 @@ class Tour {
         int numCitiesInTour;
         double calculateTourCost();
 
+        std::mt19937 gen;
+
         void createThisTourFromPermutationOrMutation(int permutationOrMutation[]);
         void setToDefaultTour();
         void setArrayToCurrPermutationOrMutation(int array[]);
@@ -31,7 +33,9 @@ class Tour {
     public:
         Tour();
         Tour(int numCitiesInTour);
+        Tour(int numCitiesInTour, std::mt19937 gen);
         Tour(int permutationOrMutation[], int numCitiesInTour);
+        Tour(int permutationOrMutation[], int numCitiesInTour, std::mt19937 gen);
         double getTourCost();
 
         void setToNextPermutedTour();
