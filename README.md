@@ -1,6 +1,53 @@
 # Traveling Salesperson Genetic Algorithm Solution
 C++ Project that implements a genetic algorithm solution to the traveling salesperson problem and compares it to the optimal solution found via a brute force approach
 
+## Running The Program
+
+### Compiling
+
+This program includes a Makefile. At the command line in Linux, type make main. The program produces an executable entitled main.
+
+### Running
+
+Issue the command ./main after making the executable. No command line arguments are required or checked.
+
+## User Input
+The program will prompt the user for values for the number of cities, the number of tours in each generation, the number of generations to run, and the percent of mutated tours in a generation in that order. Error checking is done to ensure negative numbers and other invalid inputs cannot be entered.
+
+## Output
+
+All output goes to the console.
+
+## Sample Run
+```
+--------------------------------------------------------------------
+Traveling Salesperson Problem
+--------------------------------------------------------------------
+Please enter the number of cities in a tour: 13
+Please enter the number of tours in each generation: 500
+Please enter the number of generations to run: 2000
+Please enter the percent of mutated tours in a generation: 60
+--------------------------------------------------------------------
+Running The Algorithms
+--------------------------------------------------------------------
+running brute force algorithm...
+running genetic algorithm...
+--------------------------------------------------------------------
+Results
+--------------------------------------------------------------------
+Number of cities run = 13
+Optimal tour cost from brute force = 437.39
+Brute force time = 68283ms
+Lowest tour cost found from genetic = 459.26
+Genetic time = 1409ms
+Genetic algorithm percent of optimal = 105%
+--------------------------------------------------------------------
+```
+
+## Design
+<img width="740" alt="Screen Shot 2022-03-26 at 8 21 30 PM" src="https://user-images.githubusercontent.com/77580692/160262635-3a5916b7-e1cd-405e-aef8-fbc4a07e569a.png">
+
+
 # Project Instructions
 
 ## Background
