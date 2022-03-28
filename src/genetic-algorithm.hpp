@@ -9,6 +9,7 @@ class GeneticAlgorithm {
 
     private:
         int numOfCities;
+        int startEndCity;
         int generationSize;
         int numGenerationsToRun;
         int numMutationsInGeneration;
@@ -21,7 +22,7 @@ class GeneticAlgorithm {
         void updateElite();
 
     public:
-        GeneticAlgorithm(int numCities, int genSize, int numGensToRun, float mutatedGenPercent);
+        GeneticAlgorithm(int numCities, int startEndCity, int genSize, int numGensToRun, float mutatedGenPercent);
         void runGeneticAlgorithm();
         double getLowestFoundTourCost();
         double getPercentOptimal(double optimalTourCost);

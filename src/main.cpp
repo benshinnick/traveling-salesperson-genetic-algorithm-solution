@@ -20,6 +20,14 @@ int promptUserForInt(std::string message) {
     } while(intInput < 0);
     return intInput;
 }
+int promptUserForIntInRange(std::string message, int low, int high) {
+    int intInput;
+    do {
+        std::cout << message << " [" << low << "," << high << "]: ";
+        std::cin >> intInput;
+    } while(intInput < low || intInput > high);
+    return intInput;
+}
 
 float promptUserForPercent(std::string message) {
     float floatInput, percent;
@@ -33,8 +41,8 @@ float promptUserForPercent(std::string message) {
 }
 
 void printDivider() {
-    std::cout<< "-------------------------------------"
-    << "-------------------------------" << std::endl;
+    std::cout<< "----------------------------------------"
+    << "----------------------------------" << std::endl;
 }
 
 void printHeader(std::string headerText) {
@@ -51,7 +59,8 @@ long getAlgorithmTimeMS(timeval startTime, timeval endTime) {
 
 int main() {
     printHeader("Traveling Salesperson Problem");
-    int numCities = promptUserForInt("Please enter the number of cities in a tour");
+    int numCities = promptUserForIntInRange("Please enter the number of cities in a tour", 0, 20);
+    int startEndCity = promptUserForIntInRange("Please enter the start and end city", 0, numCities-1);
     int genSize = promptUserForInt("Please enter the number of tours in each generation");
     int numGensToRun = promptUserForInt("Please enter the number of generations to run");
     float mutatedGenPercent = promptUserForPercent("Please enter the percent of mutated tours in a generation");
@@ -59,16 +68,16 @@ int main() {
     printHeader("Running The Algorithms");
     struct timeval startTime, endTime;
 
-    gettimeofday(&startTime, NULL);
     std::cout << "running brute force algorithm..." << std::endl;
-    BruteForceAlgorithm bruteForce = BruteForceAlgorithm(numCities);
+    BruteForceAlgorithm bruteForce = BruteForceAlgorithm(numCities, startEndCity);
+    gettimeofday(&startTime, NULL);
     bruteForce.runBruteForceAlgorithm();
     gettimeofday(&endTime, NULL);
     long bruteForceTimeMS = getAlgorithmTimeMS(startTime, endTime);
 
-    gettimeofday(&startTime, NULL);
     std::cout << "running genetic algorithm..." << std::endl;
-    GeneticAlgorithm genetic = GeneticAlgorithm(numCities, genSize, numGensToRun, mutatedGenPercent);
+    GeneticAlgorithm genetic = GeneticAlgorithm(numCities, startEndCity, genSize, numGensToRun, mutatedGenPercent);
+    gettimeofday(&startTime, NULL);
     genetic.runGeneticAlgorithm();
     gettimeofday(&endTime, NULL);
     long geneticTimeMS = getAlgorithmTimeMS(startTime, endTime);
@@ -80,5 +89,10 @@ int main() {
     std::cout << "Lowest tour cost found from genetic = " << genetic.getLowestFoundTourCost() << std::endl;
     std::cout << "Genetic time = " << geneticTimeMS << "ms"  << std::endl;
     std::cout << "Genetic algorithm percent of optimal = " << genetic.getPercentOptimal(bruteForce.getOptimalTourCost()) << "%" << std::endl;
+    printDivider();
+
+    std::cout << "Brute Force Optimal Tour:\n" << bruteForce.getOptimalTour().getTourOrderString() << std::endl;
+    printDivider();
+    std::cout << "Genetic Tour:\n" << genetic.getElite().getTourOrderString() << std::endl;
     printDivider();
 }
