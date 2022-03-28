@@ -189,40 +189,6 @@ You will experiment with various values for these parameters to see which provid
 
 Start at 10 cities and go up by 1 from there until you see a runtime of greater than 5 minutes on the brute force solution. You will not have to go far to get there. Create a table that compares the time results from the approximation compared to the brute force from 10 cities up until the brute force method requires more than 5 minutes. Show what percentage of the optimal solution (eg: 120% of optimal) your approximation solution provides at each run.
 
-## A Timer:
-
-```
-#include <sys/time.h>
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>  /*  for malloc */
-main()
-{
-  long i;
-  struct timeval * t;
-
-  t = (struct timeval *)malloc(sizeof(struct timeval));
-  
-  gettimeofday(t,NULL);
-  
-  time_t startSec = t->tv_sec;
-  
-  
-  printf("seconds = %d microseconds = %d\n",t->tv_sec - startSec,t->tv_usec); 
-    
-  for (i = 0; i < 3000000000; i++)
-  { 
-    if(i % 100000000 ==0)
-    {
-      gettimeofday(t,NULL);
-      printf("time is now seconds %d microseconds %d\n",t->tv_sec - startSec,t->tv_usec); 
-    } 
-  }
-  gettimeofday(t,NULL);
-  printf("Final: seconds = %d microseconds = %d\n",t->tv_sec - startSec,t->tv_usec); 
-}
-```
-
 ## Output:
 
 When the progam runs, it will display as output:
@@ -233,12 +199,3 @@ When the progam runs, it will display as output:
 - cost from the ga
 - time the ga took to run
 - percent of optimal (eg: 120%) that the ga produced 
-
-## Deliverables
-
-You will submit the following for this project:
-1. A User's manual that describes how to set up and run your program.
-2. A UML diagram reflecting the final layout of your program.
-3. Your source code in C++.
-4. Results file: An Excel spreadsheet containing the results from each run (for 10, 11, 12, etc cities) with one row for the 10 city, 11 city, 12 city, etc run. The column headers should be the 6 items output by a single run. This table is a summary of the data for all the individual  outputs from 10 cities, 11 cities, etc.
-5. A makefile for the project
