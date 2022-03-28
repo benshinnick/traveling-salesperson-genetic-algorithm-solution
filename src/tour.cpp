@@ -116,7 +116,7 @@ int Tour::getRandomIntInRange(int min, int max) {
 
 Tour::Tour() {
     this->numCitiesInTour = 10;
-    this->startEndCity = startEndCity;
+    this->startEndCity = 0;
     setToDefaultTour();
 }
 

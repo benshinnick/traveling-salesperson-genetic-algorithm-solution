@@ -9,13 +9,14 @@ int BruteForceAlgorithm::calculateFactorial(int n) {
     return factorial[n];
 }
 
-BruteForceAlgorithm::BruteForceAlgorithm(int numOfCities) {
+BruteForceAlgorithm::BruteForceAlgorithm(int numOfCities, int startEndCity) {
     this->numOfCities = numOfCities;
+    this->startEndCity = startEndCity;
     this->optimalTourCost = -1;
 }
 
 void BruteForceAlgorithm::runBruteForceAlgorithm() {
-    Tour currTour = Tour(numOfCities);
+    Tour currTour = Tour(numOfCities, startEndCity);
     optimalTourCost = currTour.getTourCost();
     int numOfPermutations = calculateFactorial(numOfCities - 1);
     for(int i = 0; i < numOfPermutations - 1; ++i) {
