@@ -7,15 +7,15 @@
 
 class Tour {
 
-    static const int START_AND_END_CITY = 0;
     static const int MAX_TOUR_SIZE = 21;
 
     private:
         int tourCities[MAX_TOUR_SIZE];
         int numCitiesInTour;
-        double calculateTourCost();
-
+        int startEndCity;
         std::mt19937 gen;
+
+        double calculateTourCost();
 
         void createThisTourFromPermutationOrMutation(int permutationOrMutation[]);
         void setToDefaultTour();
@@ -28,10 +28,10 @@ class Tour {
 
     public:
         Tour();
-        Tour(int numCitiesInTour);
-        Tour(int numCitiesInTour, std::mt19937 gen);
-        Tour(int permutationOrMutation[], int numCitiesInTour);
-        Tour(int permutationOrMutation[], int numCitiesInTour, std::mt19937 gen);
+        Tour(int numCitiesInTour, int startEndCity);
+        Tour(int numCitiesInTour, std::mt19937 gen, int startEndCity);
+        Tour(int permutationOrMutation[], int numCitiesInTour, int startEndCity);
+        Tour(int permutationOrMutation[], int numCitiesInTour, std::mt19937 gen, int startEndCity);
         double getTourCost();
 
         void setToNextPermutedTour();
