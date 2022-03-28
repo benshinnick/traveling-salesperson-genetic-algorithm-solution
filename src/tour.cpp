@@ -185,3 +185,12 @@ int Tour::getTourCity(int cityIndex) {
 int Tour::getNumCitiesInTour() {
     return numCitiesInTour;
 }
+
+std::string Tour::getTourOrderString() {
+    std::stringstream tourOrderStrStream;
+    for(int i = 0; i < numCitiesInTour + 1; ++i) {
+        tourOrderStrStream << getTourCity(i);
+        if(i != numCitiesInTour) tourOrderStrStream << " -> ";
+    }
+    return tourOrderStrStream.str();
+}

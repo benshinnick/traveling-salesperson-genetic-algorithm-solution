@@ -2,6 +2,7 @@
 #define TOUR_HPP
 
 #include <random>
+#include <sstream>
 
 #include "city-distances.hpp"
 
@@ -42,6 +43,8 @@ class Tour {
         void setTourCity(int cityIndex, int city);
         int getTourCity(int cityIndex);
         int getNumCitiesInTour();
+
+        std::string getTourOrderString();
 };
 
 #endif

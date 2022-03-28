@@ -68,16 +68,16 @@ int main() {
     printHeader("Running The Algorithms");
     struct timeval startTime, endTime;
 
-    gettimeofday(&startTime, NULL);
     std::cout << "running brute force algorithm..." << std::endl;
     BruteForceAlgorithm bruteForce = BruteForceAlgorithm(numCities, startEndCity);
+    gettimeofday(&startTime, NULL);
     bruteForce.runBruteForceAlgorithm();
     gettimeofday(&endTime, NULL);
     long bruteForceTimeMS = getAlgorithmTimeMS(startTime, endTime);
 
-    gettimeofday(&startTime, NULL);
     std::cout << "running genetic algorithm..." << std::endl;
     GeneticAlgorithm genetic = GeneticAlgorithm(numCities, startEndCity, genSize, numGensToRun, mutatedGenPercent);
+    gettimeofday(&startTime, NULL);
     genetic.runGeneticAlgorithm();
     gettimeofday(&endTime, NULL);
     long geneticTimeMS = getAlgorithmTimeMS(startTime, endTime);
@@ -89,5 +89,10 @@ int main() {
     std::cout << "Lowest tour cost found from genetic = " << genetic.getLowestFoundTourCost() << std::endl;
     std::cout << "Genetic time = " << geneticTimeMS << "ms"  << std::endl;
     std::cout << "Genetic algorithm percent of optimal = " << genetic.getPercentOptimal(bruteForce.getOptimalTourCost()) << "%" << std::endl;
+    printDivider();
+
+    std::cout << "Brute Force Optimal Tour:\n" << bruteForce.getOptimalTour().getTourOrderString() << std::endl;
+    printDivider();
+    std::cout << "Genetic Tour:\n" << genetic.getElite().getTourOrderString() << std::endl;
     printDivider();
 }
