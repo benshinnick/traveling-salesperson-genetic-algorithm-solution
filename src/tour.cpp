@@ -188,8 +188,13 @@ int Tour::getNumCitiesInTour() {
 
 std::string Tour::getTourOrderString() {
     std::stringstream tourOrderStrStream;
+    int lineNum = 1;
     for(int i = 0; i < numCitiesInTour + 1; ++i) {
         tourOrderStrStream << getTourCity(i);
+        if(tourOrderStrStream.str().length() > lineNum * 70) {
+            tourOrderStrStream << "\n";
+            lineNum++;
+        }
         if(i != numCitiesInTour) tourOrderStrStream << " -> ";
     }
     return tourOrderStrStream.str();
