@@ -12,50 +12,23 @@
 #include "brute-force-algorithm.hpp"
 #include "genetic-algorithm.hpp"
 
-int promptUserForInt(std::string message) {
-    int intInput;
-    do {
-        std::cout << message << ": ";
-        std::cin >> intInput;
-    } while(intInput < 0);
-    return intInput;
-}
-int promptUserForIntInRange(std::string message, int low, int high) {
-    int intInput;
-    do {
-        std::cout << message << " [" << low << "," << high << "]: ";
-        std::cin >> intInput;
-    } while(intInput < low || intInput > high);
-    return intInput;
-}
+void runAlgorithmsAndPrintResults();
 
-float promptUserForPercent(std::string message) {
-    float floatInput, percent;
-    do {
-        std::cout << message << ": ";
-        std::cin >> floatInput;
-    } while(floatInput < 0);
-    if(floatInput >= 1) percent = floatInput / 100;
-    else percent = floatInput;
-    return percent;
-}
+void runAlgorithms();
 
-void printDivider() {
-    std::cout<< "----------------------------------------"
-    << "----------------------------------" << std::endl;
-}
+void printResults();
 
-void printHeader(std::string headerText) {
-    printDivider();
-    std::cout << headerText << std::endl;
-    printDivider();
-}
+int promptUserForInt(std::string message);
 
-long getAlgorithmTimeMS(timeval startTime, timeval endTime) {
-    long seconds = endTime.tv_sec - startTime.tv_sec;
-    long useconds = endTime.tv_usec - startTime.tv_usec;
-    return ((seconds) * 1000 + useconds/1000.0);
-}
+int promptUserForIntInRange(std::string message, int low, int high);
+
+float promptUserForPercent(std::string message);
+
+void printHeader(std::string headerText);
+
+long getAlgorithmTimeMS(timeval startTime, timeval endTime);
+
+void printDivider();
 
 int main() {
     printHeader("Traveling Salesperson Problem");
@@ -95,4 +68,50 @@ int main() {
     printDivider();
     std::cout << "Genetic Tour:\n" << genetic.getElite().getTourOrderString() << std::endl;
     printDivider();
+}
+
+int promptUserForInt(std::string message) {
+    int intInput;
+    do {
+        std::cout << message << ": ";
+        std::cin >> intInput;
+    } while(intInput < 0);
+    return intInput;
+}
+int promptUserForIntInRange(std::string message, int low, int high) {
+    int intInput;
+    do {
+        std::cout << message << " [" << low << "," << high << "]: ";
+        std::cin >> intInput;
+    } while(intInput < low || intInput > high);
+    return intInput;
+}
+
+float promptUserForPercent(std::string message) {
+    float floatInput, percent;
+    do {
+        std::cout << message << ": ";
+        std::cin >> floatInput;
+    } while(floatInput < 0);
+    if(floatInput >= 1) percent = floatInput / 100;
+    else percent = floatInput;
+    return percent;
+}
+
+void printHeader(std::string headerText) {
+    printDivider();
+    std::cout << headerText << std::endl;
+    printDivider();
+}
+
+long getAlgorithmTimeMS(timeval startTime, timeval endTime) {
+    long seconds = endTime.tv_sec - startTime.tv_sec;
+    long useconds = endTime.tv_usec - startTime.tv_usec;
+    return ((seconds) * 1000 + useconds/1000.0);
+}
+
+void printDivider() {
+    std::cout << "--------------------------------------------";
+    std::cout << "--------------------------------------------";
+    std::cout << std::endl;
 }
