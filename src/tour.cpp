@@ -50,12 +50,10 @@ void Tour::setArrayToNextPermutation(int array[]) {
     int k = NUM_ELEMENTS - 1;
     while(array[m] > array[k]) k--;
 
-    // permutations like 4,3,2,1 might dip into negative indexes
     if(m >= 0 && k >= 0) swap(array, m, k);
     int p = m + 1;
     int q = NUM_ELEMENTS - 1;
     while(p < q) {
-        // permutations like 4,3,2,1 might dip into negative indexes
         if(p >= 0 && q >= 0) swap(array, p, q);
         p++;
         q--;
@@ -80,7 +78,7 @@ void Tour::setArrayToNewMutation(int array[], int numOfMutationSwaps) {
                 RandomNumberGenerator::getRandomIntInRange(minIndex, maxIndex)
             );
         }
-        if(i % 3 == 0) {
+        else if(i % 3 == 0) {
             // swap city from first half with a city from last half of the tour
             swap(
                 array,

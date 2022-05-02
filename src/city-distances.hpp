@@ -19,7 +19,6 @@ class CityDistances {
         void setDistance(int departureCity, int arrivalCity, double distance);
         double getDistance(int departureCity, int arrivalCity);
 
-        // to ensure we wont ever make copies of our singleton
         CityDistances(CityDistances const&) = delete;
         void operator=(CityDistances const&) = delete;
 };
