@@ -1,10 +1,7 @@
 #include "genetic-algorithm.hpp"
 
 void GeneticAlgorithm::setInitialGeneration() {
-    std::random_device rd; // obtain a random number from hardware
-    std::mt19937 gen(rd());
-
-    Tour initialTour = Tour(numOfCities, gen, startEndCity);
+    Tour initialTour = Tour(numOfCities, startEndCity);
     int numInitialMutationSwaps = 5;
     //First generation made up of mutated tours
     for(int i = 0; i < generationSize; ++i) {

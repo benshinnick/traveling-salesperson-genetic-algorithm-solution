@@ -1,7 +1,5 @@
 #include "tour.hpp"
 
-// Helper Functions
-
 double Tour::calculateTourCost() {
     double totalCost = 0;
     for(int i = 0; i < numCitiesInTour; ++i) {
@@ -78,24 +76,24 @@ void Tour::setArrayToNewMutation(int array[], int numOfMutationSwaps) {
             // swap city from first half with any other city in the tour
             swap(
                 array,
-                getRandomIntInRange(minIndex, midIndex),
-                getRandomIntInRange(minIndex, maxIndex)
+                RandomNumberGenerator::getRandomIntInRange(minIndex, midIndex),
+                RandomNumberGenerator::getRandomIntInRange(minIndex, maxIndex)
             );
         }
         if(i % 3 == 0) {
             // swap city from first half with a city from last half of the tour
             swap(
                 array,
-                getRandomIntInRange(minIndex, midIndex),
-                getRandomIntInRange(midIndex+1, maxIndex)
+                RandomNumberGenerator::getRandomIntInRange(minIndex, midIndex),
+                RandomNumberGenerator::getRandomIntInRange(midIndex+1, maxIndex)
             );
         }
         else {
             // swap two values in the first half of the tour
             swap(
                 array,
-                getRandomIntInRange(minIndex, midIndex),
-                getRandomIntInRange(minIndex, midIndex)
+                RandomNumberGenerator::getRandomIntInRange(minIndex, midIndex),
+                RandomNumberGenerator::getRandomIntInRange(minIndex, midIndex)
             );
         }
     }
@@ -106,13 +104,6 @@ void Tour::swap(int array[], int index1, int index2) {
     array[index1] = array[index2];
     array[index2] = temp;
 }
-
-int Tour::getRandomIntInRange(int min, int max) {
-    std::uniform_int_distribution<> distr(min, max);
-    return distr(this->gen);
-}
-
-// Public
 
 Tour::Tour() {
     this->numCitiesInTour = 10;
@@ -126,22 +117,8 @@ Tour::Tour(int numCitiesInTour, int startEndCity) {
     setToDefaultTour();
 }
 
-Tour::Tour(int numCitiesInTour, std::mt19937 gen, int startEndCity) {
-    this->gen = gen;
-    this->numCitiesInTour = numCitiesInTour;
-    this->startEndCity = startEndCity;
-    setToDefaultTour();
-}
-
 Tour::Tour(int permutationOrMutation[], int numCitiesInTour, int startEndCity) {
     this->numCitiesInTour = numCitiesInTour;
-    this->startEndCity = startEndCity;
-    createThisTourFromPermutationOrMutation(permutationOrMutation);
-}
-
-Tour::Tour(int permutationOrMutation[], int numCitiesInTour, std::mt19937 gen, int startEndCity) {
-    this->numCitiesInTour = numCitiesInTour;
-    this->gen = gen;
     this->startEndCity = startEndCity;
     createThisTourFromPermutationOrMutation(permutationOrMutation);
 }
@@ -159,7 +136,7 @@ void Tour::setToNextPermutedTour() {
 Tour Tour::getNextPermutedTour() {
     int nextPermutation[MAX_TOUR_SIZE - 2];
     setArrayToNextPermutation(nextPermutation);
-    return Tour(nextPermutation, numCitiesInTour, gen, startEndCity);
+    return Tour(nextPermutation, numCitiesInTour, startEndCity);
 }
 
 void Tour::setToNewMutatedTour(int numOfMutationSwaps) {
@@ -171,7 +148,7 @@ void Tour::setToNewMutatedTour(int numOfMutationSwaps) {
 Tour Tour::getNewMutatedTour(int numOfMutationSwaps) {
     int newMutation[MAX_TOUR_SIZE - 2];
     setArrayToNewMutation(newMutation, numOfMutationSwaps);
-    return Tour(newMutation, numCitiesInTour, gen, startEndCity);
+    return Tour(newMutation, numCitiesInTour, startEndCity);
 }
 
 void Tour::setTourCity(int cityIndex, int city) {
