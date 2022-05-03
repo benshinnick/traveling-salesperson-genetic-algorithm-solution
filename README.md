@@ -62,8 +62,7 @@ Genetic Tour:
 
 
 ## Design
-<img width="740" alt="Screen Shot 2022-03-27 at 10 43 30 PM" src="https://user-images.githubusercontent.com/77580692/160322936-194e1f93-1085-49c0-9ca9-fd69ce516d85.png">
-
+![UML_DSA_P3 drawio (1)](https://user-images.githubusercontent.com/77580692/166500555-182b7980-ba99-46b4-a52d-18d7b85ff31f.png)
 
 # Project Instructions
 
