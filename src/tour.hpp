@@ -9,9 +9,9 @@
 
 class Tour {
 
-    private:
-        static const int MAX_TOUR_SIZE = 21;
+    static const int MAX_TOUR_SIZE = 21;
 
+    private:
         int tourCities[MAX_TOUR_SIZE];
         int numCitiesInTour;
         int startEndCity;
