@@ -37,6 +37,18 @@ void GeneticAlgorithm::updateElite() {
     elite = foundElite;
 }
 
+GeneticAlgorithm::GeneticAlgorithm() {
+    this->numOfCities = 12;
+    this->startEndCity = 0;
+    this->generationSize = 1000;
+    this->numGenerationsToRun = 1000;
+    this->numMutationsInGeneration = 0.5 * generationSize;
+    this->currGeneration.resize(generationSize);
+    
+    setInitialGeneration();
+    updateElite();
+}
+
 GeneticAlgorithm::GeneticAlgorithm(int numCities, int startEndCity, int genSize, int numGensToRun, float mutatedGenPercent) {
     this->numOfCities = numCities;
     this->startEndCity = startEndCity;

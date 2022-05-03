@@ -2,8 +2,7 @@ CXX = g++
 CXXFLAGS = -g -std=c++17 -Wall -Werror=return-type  -Werror=uninitialized # --coverage
 # Do not allow compiling if a non-void function is missing a return statement
 # Do not allow compiling if a variable is used without being initialized
-
-SRCS = $(wildcard src/*.hpp)
+SRCS = $(filter-out src/default-constants.hpp, $(wildcard src/*.hpp))
 OBJECTS = $(SRCS:src/%.hpp=src/%.o)
 
 CATCH = test/catch/catch.o

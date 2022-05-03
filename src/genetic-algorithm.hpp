@@ -2,6 +2,7 @@
 #define GENETIC_ALGORITHM_HPP
 
 #include "tour.hpp"
+#include "default-constants.hpp"
 
 #include <vector>
 
@@ -22,6 +23,7 @@ class GeneticAlgorithm {
         void updateElite();
 
     public:
+        GeneticAlgorithm();
         GeneticAlgorithm(int numCities, int startEndCity, int genSize, int numGensToRun, float mutatedGenPercent);
         void runGeneticAlgorithm();
         double getLowestFoundTourCost();

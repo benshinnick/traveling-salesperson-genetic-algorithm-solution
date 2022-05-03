@@ -1,0 +1,10 @@
+#ifndef DEFAULT_CONSTANTS_HPP
+#define DEFAULT_CONSTANTS_HPP
+
+static int DEFAULT_NUM_CITIES = 12;
+static int DEFAULT_START_END_CITY = 0;
+static int DEFAULT_GEN_SIZE = 1000;
+static int DEFAULT_GENS_TO_RUN = 1000;
+static float DEFAULT_MUTATED_GEN_PERCENT = 0.5;
+
+#endif

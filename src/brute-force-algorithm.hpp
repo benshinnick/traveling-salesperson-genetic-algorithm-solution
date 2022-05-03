@@ -2,6 +2,7 @@
 #define BRUTE_FORCE_ALGORITHM_HPP
 
 #include "tour.hpp"
+#include "default-constants.hpp"
 
 class BruteForceAlgorithm {
 
@@ -12,10 +13,12 @@ class BruteForceAlgorithm {
         int calculateFactorial(int n);
 
     public:
+        BruteForceAlgorithm();
         BruteForceAlgorithm(int numOfCities, int startEndCity);
         void runBruteForceAlgorithm();
         Tour getOptimalTour();
         double getOptimalTourCost();
+        int getNumPermuations();
 };
 
 #endif
