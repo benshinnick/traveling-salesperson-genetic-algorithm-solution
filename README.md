@@ -62,7 +62,7 @@ Genetic Tour:
 
 
 ## Design
-![UML_DSA_P3 drawio (1)](https://user-images.githubusercontent.com/77580692/166500555-182b7980-ba99-46b4-a52d-18d7b85ff31f.png)
+![P3UMLPNG](https://user-images.githubusercontent.com/77580692/166500866-ea5fa811-4e86-43f8-b3c4-9c0b5244260a.png)
 
 # Project Instructions
 
