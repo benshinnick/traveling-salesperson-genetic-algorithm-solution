@@ -20,35 +20,35 @@ All output goes to the console.
 
 ## Sample Run
 ```
---------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 Traveling Salesperson Problem
---------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 Please enter the number of cities in a tour [0,20]: 13
 Please enter the start and end city [0,12]: 0
-Please enter the number of tours in each generation: 500
-Please enter the number of generations to run: 2000
-Please enter the percent of mutated tours in a generation: 60
---------------------------------------------------------------------------
+Please enter the number of tours in each generation: 1000
+Please enter the number of generations to run: 1000
+Please enter the percent of mutated tours in a generation: 50
+----------------------------------------------------------------------------------------
 Running The Algorithms
---------------------------------------------------------------------------
-running brute force algorithm...
+----------------------------------------------------------------------------------------
+running brute force algorithm (checking all 479001600 permutations)...
 running genetic algorithm...
---------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 Results
---------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 Number of cities run = 13
 Optimal tour cost from brute force = 437.39
-Brute force time = 70269ms
-Lowest tour cost found from genetic = 470.72
-Genetic time = 1375ms
-Genetic algorithm percent of optimal = 107.62%
---------------------------------------------------------------------------
+Brute force time = 70760ms
+Lowest tour cost found from genetic = 470.64
+Genetic time = 525ms
+Genetic algorithm percent of optimal = 107.602%
+----------------------------------------------------------------------------------------
 Brute Force Optimal Tour:
 0 -> 1 -> 5 -> 7 -> 4 -> 10 -> 3 -> 9 -> 2 -> 6 -> 11 -> 8 -> 12 -> 0
---------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
 Genetic Tour:
-0 -> 7 -> 11 -> 2 -> 6 -> 8 -> 4 -> 1 -> 5 -> 10 -> 3 -> 9 -> 12 -> 0
---------------------------------------------------------------------------
+0 -> 1 -> 2 -> 6 -> 11 -> 8 -> 5 -> 7 -> 4 -> 10 -> 3 -> 9 -> 12 -> 0
+----------------------------------------------------------------------------------------
 ```
 
 ## Sample Results
